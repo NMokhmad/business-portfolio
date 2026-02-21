@@ -1,35 +1,83 @@
-const Footer = ({ darkMode, scrollToSection, scrollToContact }) => {
+export default function Footer({ scrollToSection }) {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className={`${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-t py-12`}>
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent mb-4">
-            Mokhmad
-          </div>
-          <p className="text-gray-400">
-            Développeur web fullstack | Je transforme vos idées en solutions qui génèrent des résultats
-          </p>
-        </div>
+    <footer
+      style={{
+        background: 'var(--mc-bedrock)',
+        borderTop: '4px solid #000',
+        boxShadow: 'inset 0 4px 0 rgba(255,255,255,0.03)',
+        padding: '40px 20px',
+        textAlign: 'center',
+      }}
+    >
+      {/* Bedrock texture strip */}
+      <div style={{
+        width: '100%',
+        height: '4px',
+        marginBottom: '32px',
+        background: `repeating-linear-gradient(
+          90deg,
+          #222 0px, #222 8px,
+          #1A1A1A 8px, #1A1A1A 16px
+        )`,
+      }} />
 
-        <div className="flex flex-wrap justify-center gap-8 mb-8 text-sm">
-          <button onClick={() => scrollToSection('differentiators')} className="hover:text-blue-400 transition-colors">Pourquoi moi</button>
-          <button onClick={() => scrollToSection('projects')} className="hover:text-blue-400 transition-colors">Résultats</button>
-          <button onClick={() => scrollToSection('process')} className="hover:text-blue-400 transition-colors">Process</button>
-          <button onClick={() => scrollToSection('faq')} className="hover:text-blue-400 transition-colors">FAQ</button>
-          <button onClick={scrollToContact} className="hover:text-blue-400 transition-colors">Contact</button>
-        </div>
-
-        <div className="text-center text-gray-400 text-sm">
-          <p>© 2026 Mokhmad. Tous droits réservés.</p>
-          <p className="mt-2">
-            <a href="#" className="hover:text-blue-400 transition-colors">Mentions légales</a>
-            {" · "}
-            <a href="#" className="hover:text-blue-400 transition-colors">Politique de confidentialité</a>
-          </p>
-        </div>
+      {/* Nav links */}
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '8px',
+        justifyContent: 'center',
+        marginBottom: '32px',
+      }}>
+        {['hero', 'about', 'projects', 'skills', 'contact'].map((id) => (
+          <button
+            key={id}
+            onClick={() => scrollToSection(id)}
+            className="pixel-text pixel-border-slot"
+            style={{
+              padding: '8px 12px',
+              background: 'var(--mc-slot)',
+              color: 'var(--mc-text-gray)',
+              fontSize: '7px',
+              border: 'none',
+            }}
+          >
+            {id.charAt(0).toUpperCase() + id.slice(1)}
+          </button>
+        ))}
       </div>
+
+      {/* Divider */}
+      <div style={{
+        width: '80px',
+        height: '2px',
+        background: 'var(--mc-stone-dark)',
+        margin: '0 auto 24px',
+      }} />
+
+      <p
+        className="pixel-text pixel-shadow"
+        style={{ fontSize: '9px', color: 'var(--mc-text-gray)', marginBottom: '16px' }}
+      >
+        Construit bloc par bloc avec{' '}
+        <span style={{ color: 'var(--mc-redstone)' }}>❤</span>{' '}
+        par Mokhmad
+      </p>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginBottom: '8px' }}>
+        <span className="pixel-text" style={{ fontSize: '7px', color: '#555' }}>
+          v1.0.0 — Build {year}
+        </span>
+        <span className="pixel-text" style={{ fontSize: '7px', color: '#444' }}>
+          World Seed: 0xDEADBEEF
+        </span>
+      </div>
+
+      <p className="pixel-text" style={{ fontSize: '6px', color: '#333', marginTop: '8px' }}>
+        React + TailwindCSS • Aucun Creeper n'a été blessé lors de la création de ce portfolio
+      </p>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -1,60 +1,137 @@
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
-const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection, scrollToContact }) => {
+const NAV_ITEMS = [
+  { id: 'hero',     label: '🏠 Accueil' },
+  { id: 'about',    label: '📖 À Propos' },
+  { id: 'projects', label: '📦 Projets' },
+  { id: 'skills',   label: '✨ Skills' },
+  { id: 'contact',  label: '✉ Contact' },
+];
+
+export default function Navbar({ activeSection, scrollToSection }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className={`fixed top-0 w-full z-50 backdrop-blur-md ${darkMode ? 'bg-black/50 border-gray-800' : 'bg-white/50 border-gray-200'} border-b transition-all duration-300`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-            Mokhmad
-          </div>
+    <nav
+      style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0,
+        zIndex: 1000,
+        background: 'var(--mc-inventory)',
+        borderBottom: '3px solid #000',
+        boxShadow: '0 3px 0 var(--mc-stone-dark)',
+      }}
+    >
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 16px',
+        display: 'flex',
+        alignItems: 'center',
+        height: '58px',
+        gap: '6px',
+      }}>
+        {/* Logo */}
+        <button
+          onClick={() => scrollToSection('hero')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            background: 'none',
+            border: 'none',
+            marginRight: 'auto',
+            padding: '4px 8px',
+          }}
+        >
+          <span style={{ fontSize: '18px', color: 'var(--mc-diamond)' }}>⬡</span>
+          <span
+            className="pixel-text pixel-shadow-diamond"
+            style={{ fontSize: '9px', color: 'var(--mc-diamond)', letterSpacing: '1px' }}
+          >
+            MOKHMAD.DEV
+          </span>
+        </button>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('differentiators')} className="hover:text-blue-400 transition-colors">Pourquoi moi</button>
-            <button onClick={() => scrollToSection('projects')} className="hover:text-blue-400 transition-colors">Résultats</button>
-            <button onClick={() => scrollToSection('process')} className="hover:text-blue-400 transition-colors">Process</button>
-            <button onClick={() => scrollToSection('faq')} className="hover:text-blue-400 transition-colors">FAQ</button>
-            <button
-              onClick={scrollToContact}
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all"
-            >
-              Discuter
-            </button>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-lg ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'} transition-colors`}
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-          </div>
-
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-200'}`}
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+        {/* Desktop nav slots */}
+        <div style={{ display: 'flex', gap: '4px' }} className="hidden md:flex">
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`pixel-text ${isActive ? 'nav-slot-active' : ''}`}
+                style={{
+                  padding: '8px 14px',
+                  background: isActive ? 'var(--mc-inventory-light)' : 'var(--mc-slot)',
+                  color: isActive ? 'var(--mc-gold)' : 'var(--mc-text-gray)',
+                  fontSize: '8px',
+                  border: 'none',
+                  letterSpacing: '0.5px',
+                  boxShadow: isActive
+                    ? 'inset -2px -2px 0 #1B1B1B, inset 2px 2px 0 var(--mc-gold)'
+                    : 'inset -2px -2px 0 #1B1B1B, inset 2px 2px 0 #6B6B6B',
+                  transition: 'background 0.1s, color 0.1s',
+                }}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="pixel-text md:hidden"
+          style={{
+            background: 'var(--mc-slot)',
+            border: 'none',
+            color: 'white',
+            padding: '8px 12px',
+            fontSize: '14px',
+            boxShadow: 'inset -2px -2px 0 #1B1B1B, inset 2px 2px 0 #6B6B6B',
+          }}
+          aria-label="Menu"
+        >
+          {open ? '✕' : '☰'}
+        </button>
       </div>
 
-      {mobileMenuOpen && (
-        <div className={`md:hidden ${darkMode ? 'bg-gray-900' : 'bg-white'} border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-          <div className="px-4 py-3 space-y-3">
-            <button onClick={() => scrollToSection('differentiators')} className="block w-full text-left py-2 hover:text-blue-400">Pourquoi moi</button>
-            <button onClick={() => scrollToSection('projects')} className="block w-full text-left py-2 hover:text-blue-400">Résultats</button>
-            <button onClick={() => scrollToSection('process')} className="block w-full text-left py-2 hover:text-blue-400">Process</button>
-            <button onClick={() => scrollToSection('faq')} className="block w-full text-left py-2 hover:text-blue-400">FAQ</button>
-            <button onClick={scrollToContact} className="block w-full text-left py-2 text-blue-400 font-semibold">Discuter</button>
-          </div>
+      {/* Mobile dropdown */}
+      {open && (
+        <div style={{
+          background: 'var(--mc-inventory)',
+          padding: '8px',
+          borderTop: '2px solid #000',
+        }}>
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => { scrollToSection(item.id); setOpen(false); }}
+                className="pixel-text"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  padding: '14px',
+                  marginBottom: '4px',
+                  background: isActive ? 'var(--mc-inventory-light)' : 'var(--mc-slot)',
+                  color: isActive ? 'var(--mc-gold)' : 'white',
+                  fontSize: '9px',
+                  border: 'none',
+                  textAlign: 'left',
+                  boxShadow: 'inset -2px -2px 0 #1B1B1B, inset 2px 2px 0 #6B6B6B',
+                }}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
       )}
     </nav>
   );
-};
-
-export default Navbar;
+}

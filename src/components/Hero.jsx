@@ -1,63 +1,297 @@
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
 
-const Hero = ({ darkMode, scrollToContact, scrollToSection }) => {
+const TYPEWRITER_TEXTS = [
+  'Développeur Fullstack',
+  'Crafteur de Web Apps',
+  'Builder de Pixels',
+  'Node.js & React Dev',
+];
+
+function useTypewriter(texts, typingSpeed = 85, deletingSpeed = 45, pause = 2000) {
+  const [display, setDisplay] = useState('');
+  const [textIdx, setTextIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const text = texts[textIdx];
+    let timer;
+
+    if (!deleting) {
+      if (charIdx < text.length) {
+        timer = setTimeout(() => {
+          setDisplay(text.slice(0, charIdx + 1));
+          setCharIdx((c) => c + 1);
+        }, typingSpeed);
+      } else {
+        timer = setTimeout(() => setDeleting(true), pause);
+      }
+    } else {
+      if (charIdx > 0) {
+        timer = setTimeout(() => {
+          setDisplay(text.slice(0, charIdx - 1));
+          setCharIdx((c) => c - 1);
+        }, deletingSpeed);
+      } else {
+        setDeleting(false);
+        setTextIdx((i) => (i + 1) % texts.length);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [charIdx, deleting, textIdx, texts, typingSpeed, deletingSpeed, pause]);
+
+  return display;
+}
+
+/* ── Pixel cloud shape ─────────────────────────────────────────── */
+function PixelCloud({ className, style }) {
+  const W = 'rgba(255,255,255,0.92)';
+  const blocks = [
+    { x: 0,  y: 24, w: 48, h: 16 },
+    { x: 32, y: 24, w: 64, h: 16 },
+    { x: 80, y: 24, w: 48, h: 16 },
+    { x: 16, y: 8,  w: 32, h: 16 },
+    { x: 48, y: 8,  w: 48, h: 16 },
+    { x: 80, y: 8,  w: 32, h: 16 },
+    { x: 32, y: 0,  w: 64, h: 8  },
+  ];
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-16">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="mb-8 flex justify-center">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-            <img
-              src="/pp.webp"
-              alt="Mokhmad — Développeur Web Fullstack"
-              className="relative w-40 h-40 rounded-full object-cover border-4 border-black"
-            />
-          </div>
+    <div className={`pixel-cloud ${className}`} style={{ position: 'absolute', ...style }}>
+      <div style={{ position: 'relative', width: 144, height: 48 }}>
+        {blocks.map((b, i) => (
+          <div
+            key={i}
+            style={{
+              position: 'absolute',
+              left: b.x, top: b.y, width: b.w, height: b.h,
+              background: W,
+              imageRendering: 'pixelated',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function Hero({ scrollToSection }) {
+  const typed = useTypewriter(TYPEWRITER_TEXTS);
+
+  const stars = useMemo(
+    () =>
+      Array.from({ length: 40 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 68,
+        dur: (1.5 + Math.random() * 2.5).toFixed(2),
+        del: (Math.random() * 4).toFixed(2),
+      })),
+    []
+  );
+
+  return (
+    <section
+      id="hero"
+      className="hero-sky"
+      style={{
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: '58px',
+      }}
+    >
+      {/* Stars */}
+      {stars.map((s) => (
+        <div
+          key={s.id}
+          className="pixel-star"
+          style={{
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            '--star-dur': `${s.dur}s`,
+            '--star-del': `${s.del}s`,
+          }}
+        />
+      ))}
+
+      {/* Clouds */}
+      <PixelCloud className="pixel-cloud-1" style={{ top: '14%', left: 0 }} />
+      <PixelCloud className="pixel-cloud-2" style={{ top: '30%', left: 0, transform: 'scale(0.75)' }} />
+      <PixelCloud className="pixel-cloud-3" style={{ top: '8%',  left: 0, transform: 'scale(1.25)' }} />
+
+      {/* ── Content ── */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          textAlign: 'center',
+          padding: '0 24px',
+          maxWidth: '800px',
+          width: '100%',
+        }}
+      >
+        {/* Kicker */}
+        <p
+          className="pixel-text pixel-shadow"
+          style={{
+            fontSize: '9px',
+            color: 'var(--mc-gold)',
+            letterSpacing: '3px',
+            marginBottom: '20px',
+          }}
+        >
+          ⛏ &nbsp;PORTFOLIO LOADED &nbsp;⛏
+        </p>
+
+        {/* Name */}
+        <h1
+          className="pixel-text pixel-shadow"
+          style={{
+            fontSize: 'clamp(28px, 6vw, 64px)',
+            color: 'white',
+            marginBottom: '12px',
+            letterSpacing: '4px',
+            lineHeight: 1.3,
+          }}
+        >
+          MOKHMAD
+        </h1>
+
+        {/* Subtitle / typewriter */}
+        <div
+          style={{
+            height: '44px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '48px',
+          }}
+        >
+          <span
+            className="pixel-text"
+            style={{
+              fontSize: 'clamp(8px, 1.8vw, 14px)',
+              color: 'var(--mc-diamond)',
+              letterSpacing: '1px',
+            }}
+          >
+            {typed}
+            <span
+              style={{
+                animation: 'pixel-blink 0.75s step-end infinite',
+                color: 'var(--mc-gold)',
+                marginLeft: '2px',
+              }}
+            >
+              _
+            </span>
+          </span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Votre site web vous fait <span className="text-red-500">perdre des clients</span> ?
-        </h1>
-        <p className="text-2xl md:text-3xl mb-4 font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-          Je transforme les visiteurs en clients payants.
-        </p>
-        <p className="text-lg md:text-xl mb-8 text-gray-400 max-w-3xl mx-auto">
-          Développeur web spécialisé en solutions qui génèrent des <strong>résultats business</strong>.<br/>
-          Pas de jargon. Pas de retards. Juste des sites qui travaillent pour vous 24/7.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        {/* CTA Buttons */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <button
-            onClick={scrollToContact}
-            className="px-8 py-5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+            onClick={() => scrollToSection('contact')}
+            className="pixel-text pixel-border-btn"
+            style={{
+              padding: '14px 22px',
+              background: 'var(--mc-emerald)',
+              color: 'white',
+              fontSize: 'clamp(7px, 1.2vw, 10px)',
+              border: 'none',
+              letterSpacing: '1px',
+              minWidth: '180px',
+            }}
           >
-            Discuter de votre projet <ArrowRight />
+            ✉&nbsp;&nbsp;ME CONTACTER
           </button>
+
           <button
             onClick={() => scrollToSection('projects')}
-            className={`px-8 py-5 ${darkMode ? 'bg-gray-800/50 hover:bg-gray-800 border-gray-700' : 'bg-white hover:bg-gray-100 border-gray-300'} border-2 rounded-lg font-bold text-lg transform hover:scale-105 transition-all duration-300`}
+            className="pixel-text pixel-border-btn"
+            style={{
+              padding: '14px 22px',
+              background: 'var(--mc-stone)',
+              color: 'white',
+              fontSize: 'clamp(7px, 1.2vw, 10px)',
+              border: 'none',
+              letterSpacing: '1px',
+              minWidth: '180px',
+            }}
           >
-            Voir mes réalisations
+            📦&nbsp;&nbsp;MES PROJETS
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-          <div className="flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            <span>Livraison en 2-4 semaines</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            <span>Support inclus 30 jours</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            <span>Garantie satisfait ou remboursé</span>
-          </div>
+        {/* Stats strip */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+            justifyContent: 'center',
+            marginTop: '48px',
+          }}
+        >
+          {[
+            { icon: '⚡', label: 'Chargement < 1s' },
+            { icon: '📦', label: '2 projets livrés' },
+            { icon: '🎯', label: 'Full-stack React + Node' },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="pixel-text pixel-border-slot"
+              style={{
+                padding: '8px 12px',
+                background: 'rgba(0,0,0,0.4)',
+                fontSize: '7px',
+                color: 'var(--mc-text-gray)',
+                display: 'flex',
+                gap: '6px',
+                alignItems: 'center',
+              }}
+            >
+              <span>{stat.icon}</span>
+              <span>{stat.label}</span>
+            </div>
+          ))}
         </div>
+      </div>
+
+      {/* ── Pixel grass ground ── */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '72px' }}>
+        {/* Grass top layer */}
+        <div style={{
+          height: '24px',
+          background: `repeating-linear-gradient(
+            90deg,
+            var(--mc-grass) 0px, var(--mc-grass) 16px,
+            var(--mc-grass-light) 16px, var(--mc-grass-light) 32px
+          )`,
+          borderTop: '3px solid rgba(0,0,0,0.35)',
+        }} />
+        {/* Dirt layer */}
+        <div style={{
+          height: '48px',
+          background: `repeating-linear-gradient(
+            90deg,
+            var(--mc-dirt) 0px, var(--mc-dirt) 16px,
+            var(--mc-dirt-dark) 16px, var(--mc-dirt-dark) 32px
+          )`,
+        }} />
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

@@ -1,1 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
+
+:root {
+  --mc-grass: #5B8731;
+  --mc-grass-light: #6A9C3A;
+  --mc-dirt: #825432;
+  --mc-dirt-dark: #6B4328;
+  --mc-stone: #7D7D7D;
+  --mc-stone-dark: #555555;
+  --mc-stone-light: #9E9E9E;
+  --mc-sky: #87CEEB;
+  --mc-night: #1E2A4A;
+  --mc-wood: #A0522D;
+  --mc-gold: #FFD700;
+  --mc-gold-dark: #C8A200;
+  --mc-diamond: #4FC3F7;
+  --mc-diamond-dark: #0288D1;
+  --mc-redstone: #CC2222;
+  --mc-emerald: #27AE60;
+  --mc-emerald-dark: #1B7A43;
+  --mc-inventory: #2D2D2D;
+  --mc-inventory-dark: #1A1A1A;
+  --mc-inventory-light: #4A4A4A;
+  --mc-slot: #373737;
+  --mc-slot-empty: #151515;
+  --mc-enchant: #7B2FBE;
+  --mc-enchant-light: #B44FE8;
+  --mc-text-primary: #FFFFFF;
+  --mc-text-yellow: #FFFF55;
+  --mc-text-gray: #AAAAAA;
+  --mc-bedrock: #111111;
+  --mc-parchment: #D4B896;
+  --mc-parchment-dark: #9C7A4A;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  background: var(--mc-inventory-dark);
+  color: var(--mc-text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Hide default cursor on pointer devices */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ──────────────────────────────── UTILITY ──────────────────────────────── */
+
+.pixel-text {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.8;
+}
+
+.pixel-shadow {
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.85);
+}
+
+.pixel-shadow-gold {
+  text-shadow: 3px 3px 0 rgba(100, 70, 0, 0.9);
+}
+
+.pixel-shadow-diamond {
+  text-shadow: 3px 3px 0 rgba(10, 70, 110, 0.9);
+}
+
+/* ──────────────────────────────── PIXEL BORDERS ──────────────────────────────── */
+
+/* Classic Minecraft slot border */
+.pixel-border-slot {
+  box-shadow:
+    inset -2px -2px 0 #1B1B1B,
+    inset 2px 2px 0 #6B6B6B;
+}
+
+/* Slot hovered */
+.pixel-border-slot-hover {
+  box-shadow:
+    inset -2px -2px 0 #3A3A3A,
+    inset 2px 2px 0 #AAAAAA,
+    0 0 10px rgba(79, 195, 247, 0.45);
+}
+
+/* Slot selected / active (gold) */
+.pixel-border-slot-selected {
+  box-shadow:
+    inset -2px -2px 0 #1B1B1B,
+    inset 2px 2px 0 var(--mc-gold),
+    0 0 14px rgba(255, 215, 0, 0.5);
+}
+
+/* 3D button (Minecraft style) */
+.pixel-border-btn {
+  box-shadow:
+    inset -3px -5px 0 rgba(0, 0, 0, 0.45),
+    inset 3px 3px 0 rgba(255, 255, 255, 0.22),
+    0 5px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+.pixel-border-btn:active {
+  box-shadow:
+    inset 3px 4px 0 rgba(0, 0, 0, 0.35),
+    inset -2px -2px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(4px);
+}
+
+/* Inventory container border */
+.pixel-border-inventory {
+  box-shadow:
+    inset -4px -4px 0 #1B1B1B,
+    inset 4px 4px 0 #6B6B6B,
+    0 0 0 3px #000;
+}
+
+/* Outer decorative border */
+.pixel-border-outer {
+  box-shadow:
+    0 0 0 2px #000,
+    0 0 0 5px var(--mc-stone),
+    0 0 0 7px #000;
+}
+
+/* Enchanted book / skill card border */
+.pixel-border-enchant {
+  box-shadow:
+    inset -2px -3px 0 rgba(0, 0, 0, 0.7),
+    inset 2px 2px 0 rgba(180, 79, 232, 0.5),
+    0 0 16px rgba(123, 47, 190, 0.4);
+}
+
+/* ──────────────────────────────── ANIMATIONS ──────────────────────────────── */
+
+@keyframes sky-cycle {
+  0%, 100% {
+    background: linear-gradient(180deg,
+      #87CEEB 0%,
+      #ADE4FF 50%,
+      #C8F4D0 78%,
+      #5B8731 100%);
+  }
+  35% {
+    background: linear-gradient(180deg,
+      #FF7A30 0%,
+      #FFA85A 30%,
+      #87CEEB 65%,
+      #5B8731 100%);
+  }
+  50% {
+    background: linear-gradient(180deg,
+      #080E1F 0%,
+      #1E2A4A 50%,
+      #2C3A1E 80%,
+      #2D4A1E 100%);
+  }
+  85% {
+    background: linear-gradient(180deg,
+      #1E2A4A 0%,
+      #2C3E6B 55%,
+      #3A4A2E 80%,
+      #4A6A3A 100%);
+  }
+}
+
+@keyframes cloud-drift-1 {
+  from { transform: translateX(-180px); }
+  to   { transform: translateX(110vw); }
+}
+
+@keyframes cloud-drift-2 {
+  from { transform: translateX(-220px); }
+  to   { transform: translateX(110vw); }
+}
+
+@keyframes cloud-drift-3 {
+  from { transform: translateX(-160px); }
+  to   { transform: translateX(110vw); }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50%       { opacity: 0.95; transform: scale(1.6); }
+}
+
+@keyframes pixel-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes xp-fill {
+  from { width: 0%; }
+  to   { width: var(--xp-target, 80%); }
+}
+
+@keyframes xp-glow {
+  0%, 100% { box-shadow: 0 0 6px rgba(39, 174, 96, 0.5); }
+  50%       { box-shadow: 0 0 18px rgba(39, 174, 96, 1); }
+}
+
+@keyframes chest-open {
+  0%   { transform: scaleY(0); opacity: 0; }
+  65%  { transform: scaleY(1.04); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes tooltip-appear {
+  from { opacity: 0; transform: translateY(6px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes enchant-float {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 0.7; }
+  100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes slot-pulse {
+  0%, 100% {
+    box-shadow:
+      inset -2px -2px 0 #1B1B1B,
+      inset 2px 2px 0 #6B6B6B,
+      0 0 8px rgba(79, 195, 247, 0.5);
+  }
+  50% {
+    box-shadow:
+      inset -2px -2px 0 #1B1B1B,
+      inset 2px 2px 0 #AAAAAA,
+      0 0 22px rgba(79, 195, 247, 1);
+  }
+}
+
+@keyframes nav-active-glow {
+  0%, 100% { box-shadow: inset -2px -2px 0 #1B1B1B, inset 2px 2px 0 var(--mc-gold); }
+  50%       { box-shadow: inset -2px -2px 0 #1B1B1B, inset 2px 2px 0 var(--mc-gold), 0 0 12px rgba(255, 215, 0, 0.7); }
+}
+
+@keyframes float-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ──────────────────────────────── SCROLLBAR ──────────────────────────────── */
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--mc-bedrock); }
+::-webkit-scrollbar-thumb {
+  background: var(--mc-stone-dark);
+  box-shadow: inset -1px -1px 0 #000, inset 1px 1px 0 var(--mc-stone);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--mc-stone); }
+
+/* ──────────────────────────────── SELECTION ──────────────────────────────── */
+
+::selection { background: var(--mc-enchant); color: white; }
+
+/* ──────────────────────────────── IMAGES ──────────────────────────────── */
+
+img { image-rendering: pixelated; }

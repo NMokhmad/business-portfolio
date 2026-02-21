@@ -1,1 +1,105 @@
-@import "tailwindcss";
+/* ──────────────────────────────── HERO ──────────────────────────────── */
+
+.hero-sky {
+  animation: sky-cycle 30s ease-in-out infinite;
+}
+
+.pixel-cloud {
+  position: absolute;
+  pointer-events: none;
+}
+.pixel-cloud-1 { animation: cloud-drift-1 30s linear infinite; animation-delay: 0s; }
+.pixel-cloud-2 { animation: cloud-drift-2 42s linear infinite; animation-delay: -16s; }
+.pixel-cloud-3 { animation: cloud-drift-3 24s linear infinite; animation-delay: -8s; }
+
+.pixel-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  image-rendering: pixelated;
+  animation: star-twinkle var(--star-dur, 2s) ease-in-out infinite;
+  animation-delay: var(--star-del, 0s);
+}
+
+/* ──────────────────────────────── INVENTORY ──────────────────────────────── */
+
+.chest-panel {
+  transform-origin: top center;
+  animation: chest-open 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  overflow: hidden;
+}
+
+.mc-tooltip {
+  animation: tooltip-appear 0.12s ease-out forwards;
+  pointer-events: none;
+}
+
+.slot-active-pulse {
+  animation: slot-pulse 1.8s ease-in-out infinite;
+}
+
+/* ──────────────────────────────── XP BAR ──────────────────────────────── */
+
+.xp-bar-fill {
+  animation: xp-fill 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+  animation-play-state: var(--xp-play, paused);
+}
+
+.xp-glow {
+  animation: xp-glow 2s ease-in-out infinite;
+}
+
+/* ──────────────────────────────── NAVBAR ──────────────────────────────── */
+
+.nav-slot-active {
+  animation: nav-active-glow 2s ease-in-out infinite;
+}
+
+/* ──────────────────────────────── ENCHANTMENT ──────────────────────────────── */
+
+.enchant-particle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  color: var(--mc-enchant-light);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  animation: enchant-float var(--ep-dur, 3s) ease-in-out infinite;
+  animation-delay: var(--ep-del, 0s);
+}
+
+/* ──────────────────────────────── MISC ──────────────────────────────── */
+
+.hotbar-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hotbar-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mc-input {
+  background: #111;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 12px;
+  box-shadow:
+    inset -2px -2px 0 #1B1B1B,
+    inset 2px 2px 0 #555;
+}
+
+.mc-input:focus {
+  box-shadow:
+    inset -2px -2px 0 #1B1B1B,
+    inset 2px 2px 0 var(--mc-diamond),
+    0 0 10px rgba(79, 195, 247, 0.35);
+}
+
+@media (max-width: 640px) {
+  .pixel-text { font-size: 0.75em; }
+}

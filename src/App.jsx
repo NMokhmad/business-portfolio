@@ -1,59 +1,50 @@
 import { useState, useEffect } from 'react';
+import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Differentiators from './components/Differentiators';
-import Problems from './components/Problems';
+import About from './components/About';
 import Projects from './components/Projects';
-import Process from './components/Process';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
+import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
-const PortfolioConversion = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
+export default function App() {
+  const [activeSection, setActiveSection] = useState('hero');
 
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
-    setMobileMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToContact = () => {
-    scrollToSection('contact');
-  };
+  useEffect(() => {
+    const sections = ['hero', 'about', 'projects', 'skills', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gradient-to-br from-black via-gray-900 to-black text-white' : 'bg-gray-50 text-gray-900'}`}>
-      <Navbar
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        scrollToSection={scrollToSection}
-        scrollToContact={scrollToContact}
-      />
-      <Hero darkMode={darkMode} scrollToContact={scrollToContact} scrollToSection={scrollToSection} />
-      <Differentiators darkMode={darkMode} scrollToSection={scrollToSection} />
-      <Problems darkMode={darkMode} scrollToContact={scrollToContact} />
-      <Projects darkMode={darkMode} />
-      <Process darkMode={darkMode} scrollToContact={scrollToContact} />
-      <Testimonials darkMode={darkMode} />
-      <FAQ darkMode={darkMode} scrollToContact={scrollToContact} />
-      <Contact darkMode={darkMode} />
-      <Footer darkMode={darkMode} scrollToSection={scrollToSection} scrollToContact={scrollToContact} />
+    <div style={{ minHeight: '100vh', background: 'var(--mc-inventory-dark)' }}>
+      <CustomCursor />
+      <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
+      <Hero scrollToSection={scrollToSection} />
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
+      <Footer scrollToSection={scrollToSection} />
     </div>
   );
-};
-
-export default PortfolioConversion;
+}
