@@ -1,1 +1,570 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+/* ================================================
+   DESIGN SYSTEM — WARM EDITORIAL DARK
+   Accent: Amber Gold · Display: Cormorant Garamond
+   ================================================ */
+
+/* Light mode defaults */
+:root {
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --surface-2: #f0ece6;
+  --border: #e0d8ce;
+  --border-hover: rgba(176, 116, 40, 0.3);
+  --gold: #b07428;
+  --gold-light: #c8893a;
+  --gold-glow: rgba(176, 116, 40, 0.08);
+  --gold-glow-strong: rgba(176, 116, 40, 0.22);
+  --text: #1a1510;
+  --text-muted: #7a6f64;
+  --text-dim: #c5b8ad;
+  --red: #c04040;
+  --green: #3a8a58;
+  --blue: #2a6aaa;
+  --nav-bg: rgba(250, 248, 245, 0.92);
+  --orb-opacity: 0.06;
+}
+
+/* Dark mode */
+html.dark {
+  --bg: #0d0b09;
+  --surface: #171410;
+  --surface-2: #201d18;
+  --border: #2e2923;
+  --border-hover: rgba(200, 137, 58, 0.35);
+  --gold: #c8893a;
+  --gold-light: #e0a850;
+  --gold-glow: rgba(200, 137, 58, 0.1);
+  --gold-glow-strong: rgba(200, 137, 58, 0.28);
+  --text: #f0ebe3;
+  --text-muted: #9a8f84;
+  --text-dim: #3a3530;
+  --red: #d96060;
+  --green: #6bbd8d;
+  --blue: #5b9bd6;
+  --nav-bg: rgba(13, 11, 9, 0.88);
+  --orb-opacity: 0.08;
+}
+
+/* ================================================
+   GLOBAL
+   ================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ================================================
+   TYPOGRAPHY
+   ================================================ */
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+h1, h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.3;
+}
+
+/* ================================================
+   BACKGROUND AMBIENT ORBS
+   ================================================ */
+
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--orb-opacity);
+}
+
+.bg-orb-1 {
+  width: min(900px, 100vw);
+  height: min(900px, 100vw);
+  top: -25%;
+  left: -15%;
+  background: radial-gradient(circle, rgba(200, 137, 58, 1) 0%, transparent 65%);
+  animation: orb1 24s ease-in-out infinite alternate;
+}
+
+.bg-orb-2 {
+  width: min(600px, 80vw);
+  height: min(600px, 80vw);
+  bottom: 10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(200, 137, 58, 1) 0%, transparent 65%);
+  animation: orb2 30s ease-in-out infinite alternate;
+}
+
+@keyframes orb1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(8%, 12%) scale(1.12); }
+}
+
+@keyframes orb2 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-6%, -10%) scale(0.88); }
+}
+
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.15s; }
+.d3 { animation-delay: 0.25s; }
+.d4 { animation-delay: 0.38s; }
+.d5 { animation-delay: 0.5s; }
+.d6 { animation-delay: 0.62s; }
+.d7 { animation-delay: 0.75s; }
+.d8 { animation-delay: 0.88s; }
+
+/* ================================================
+   LAYOUT COMPONENTS
+   ================================================ */
+
+/* Navbar */
+.navbar-bg {
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+/* Section separator */
+.section-sep {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Section label (tag above heading) */
+.section-label {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  background: var(--gold-glow);
+  margin-bottom: 1.5rem;
+}
+
+/* Gold horizontal accent line */
+.gold-line {
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.gold-line-center {
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.25rem;
+}
+
+/* ================================================
+   CARDS
+   ================================================ */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-glow) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 40px var(--gold-glow-strong);
+  transform: translateY(-3px);
+}
+
+.card:hover::before { opacity: 1; }
+
+/* ================================================
+   BUTTONS
+   ================================================ */
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: #0d0b09;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.55s ease;
+}
+
+.btn-gold:hover::before { transform: translateX(100%); }
+
+.btn-gold:hover {
+  box-shadow: 0 8px 32px rgba(200, 137, 58, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-gold:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ================================================
+   NAVIGATION
+   ================================================ */
+
+.nav-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover { color: var(--gold); }
+.nav-link:hover::after { width: 100%; }
+
+/* ================================================
+   FORM INPUTS
+   ================================================ */
+
+.form-input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  padding: 0.9rem 1.25rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+.form-input::placeholder { color: var(--text-dim); }
+
+/* ================================================
+   PROCESS TIMELINE
+   ================================================ */
+
+.step-badge {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-hover);
+  background: var(--gold-glow);
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.step-line {
+  width: 1px;
+  flex: 1;
+  min-height: 32px;
+  background: linear-gradient(to bottom, var(--border-hover), var(--border));
+}
+
+/* ================================================
+   QUOTE / TESTIMONIAL
+   ================================================ */
+
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.25;
+  display: block;
+  margin-bottom: -1.5rem;
+  user-select: none;
+}
+
+/* ================================================
+   FAQ ACCORDION
+   ================================================ */
+
+details.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+details.faq-item[open] {
+  border-color: var(--border-hover);
+}
+
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+details.faq-item summary::-webkit-details-marker { display: none; }
+
+/* ================================================
+   UTILITY
+   ================================================ */
+
+.text-gold { color: var(--gold); }
+.text-muted { color: var(--text-muted); }
+.text-dim { color: var(--text-dim); }
+.border-default { border-color: var(--border); }
+.bg-surface { background: var(--surface); }
+.bg-surface-2 { background: var(--surface-2); }
+
+/* Inline text accent */
+.text-accent-red { color: var(--red); }
+.text-accent-green { color: var(--green); }
+
+/* Thin decorative line above section headings */
+.heading-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.heading-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ================================================
+   SPACING — Compact section vertical rhythm
+   ================================================ */
+
+/* Reduce section vertical padding (inline styles use 6rem which is too much) */
+section {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+/* Hero keeps more top padding to clear the fixed navbar */
+section[style*="min-height"] {
+  padding-top: 6rem !important;
+  padding-bottom: 4rem !important;
+}
+
+/* Reduce the separator's bottom margin (inline style = 6rem, too generous) */
+hr.section-sep {
+  margin-bottom: 3rem !important;
+}
+
+/* Differentiators: force 2×2 grid on desktop, 1 col on mobile */
+.diff-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+@media (max-width: 640px) {
+  .diff-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================
+   RESPONSIVE — SMALL SCREENS (≤ 550px)
+   ================================================ */
+
+@media (max-width: 550px) {
+  /* Reduce section horizontal padding to prevent overflow */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Navbar inner padding */
+  nav > div:first-child {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Hero: tighten vertical spacing */
+  section[style*="min-height: 100vh"] {
+    padding-top: 5rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Buttons: allow wrapping on very small screens */
+  .btn-gold,
+  .btn-outline {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* Section label pill */
+  .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* Step badge in Process / Contact */
+  .step-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Extra tight: very small phones (320px) */
+  section {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  nav > div:first-child {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}

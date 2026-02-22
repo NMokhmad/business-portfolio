@@ -1,61 +1,159 @@
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
-const Hero = ({ darkMode, scrollToContact, scrollToSection }) => {
+const Hero = ({ scrollToContact, scrollToSection }) => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-16">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="mb-8 flex justify-center">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+    <section
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '6rem 2rem 4rem',
+      }}
+    >
+      <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
+
+        {/* Section label */}
+        <div className="animate-fade-up d1" style={{ marginBottom: '2.5rem' }}>
+          <span className="section-label">Développeur Web Fullstack</span>
+        </div>
+
+        {/* Photo */}
+        <div className="animate-fade-up d2" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            {/* Gold ring */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: '-3px',
+                borderRadius: '50%',
+                background: `conic-gradient(var(--gold) 0deg, var(--gold-glow) 90deg, var(--gold) 180deg, var(--gold-glow) 270deg, var(--gold) 360deg)`,
+                animation: 'spin 8s linear infinite',
+              }}
+              aria-hidden="true"
+            />
+            <div
+              style={{
+                position: 'absolute',
+                inset: '0px',
+                borderRadius: '50%',
+                background: 'var(--bg)',
+              }}
+              aria-hidden="true"
+            />
             <img
               src="/pp.webp"
               alt="Mokhmad — Développeur Web Fullstack"
-              className="relative w-40 h-40 rounded-full object-cover border-4 border-black"
+              style={{
+                position: 'relative',
+                width: '140px',
+                height: '140px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '3px solid var(--bg)',
+              }}
             />
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Votre site web vous fait <span className="text-red-500">perdre des clients</span> ?
+        {/* Headline */}
+        <h1
+          className="animate-fade-up d3 font-display"
+          style={{
+            fontSize: 'clamp(2.8rem, 7vw, 5.5rem)',
+            fontWeight: 700,
+            marginBottom: '1.25rem',
+            lineHeight: 1.05,
+          }}
+        >
+          Votre site vous fait{' '}
+          <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>perdre des clients</span>
+          {' '}?
         </h1>
-        <p className="text-2xl md:text-3xl mb-4 font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+
+        {/* Subheading */}
+        <p
+          className="animate-fade-up d4 font-display"
+          style={{
+            fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)',
+            fontWeight: 400,
+            fontStyle: 'italic',
+            color: 'var(--gold)',
+            marginBottom: '1.25rem',
+            lineHeight: 1.2,
+          }}
+        >
           Je transforme les visiteurs en clients payants.
         </p>
-        <p className="text-lg md:text-xl mb-8 text-gray-400 max-w-3xl mx-auto">
-          Développeur web spécialisé en solutions qui génèrent des <strong>résultats business</strong>.<br/>
+
+        {/* Description */}
+        <p
+          className="animate-fade-up d5"
+          style={{
+            fontSize: '1.05rem',
+            color: 'var(--text-muted)',
+            maxWidth: '640px',
+            margin: '0 auto 3rem',
+            lineHeight: 1.7,
+          }}
+        >
+          Développeur web spécialisé en solutions qui génèrent des{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>résultats business</strong>.{' '}
           Pas de jargon. Pas de retards. Juste des sites qui travaillent pour vous 24/7.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <button
-            onClick={scrollToContact}
-            className="px-8 py-5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-          >
-            Discuter de votre projet <ArrowRight />
+        {/* CTAs */}
+        <div
+          className="animate-fade-up d6"
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '3.5rem' }}
+        >
+          <button onClick={scrollToContact} className="btn-gold" style={{ fontSize: '0.82rem' }}>
+            Discuter de votre projet <ArrowRight size={16} />
           </button>
-          <button
-            onClick={() => scrollToSection('projects')}
-            className={`px-8 py-5 ${darkMode ? 'bg-gray-800/50 hover:bg-gray-800 border-gray-700' : 'bg-white hover:bg-gray-100 border-gray-300'} border-2 rounded-lg font-bold text-lg transform hover:scale-105 transition-all duration-300`}
-          >
+          <button onClick={() => scrollToSection('projects')} className="btn-outline" style={{ fontSize: '0.82rem' }}>
             Voir mes réalisations
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-          <div className="flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            <span>Livraison en 2-4 semaines</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            <span>Support inclus 30 jours</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            <span>Garantie satisfait ou remboursé</span>
-          </div>
+        {/* Trust badges */}
+        <div
+          className="animate-fade-up d7"
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '1.5rem',
+          }}
+        >
+          {[
+            'Livraison en 2–4 semaines',
+            'Support inclus 30 jours',
+            'Satisfait ou remboursé',
+          ].map((badge) => (
+            <div
+              key={badge}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontSize: '0.82rem',
+                color: 'var(--text-muted)',
+              }}
+            >
+              <CheckCircle size={15} style={{ color: 'var(--green)', flexShrink: 0 }} />
+              {badge}
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Spinning ring animation */}
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 };

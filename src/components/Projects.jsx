@@ -1,76 +1,168 @@
 import { ExternalLink, Code } from 'lucide-react';
 import { projects } from '../data/projects';
 
-const Projects = ({ darkMode }) => {
-  return (
-    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-transparent to-blue-500/5">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Projets qui ont généré des résultats concrets
-        </h2>
-        <p className="text-xl text-gray-400 text-center mb-16">
-          Pas de bla-bla. Juste des chiffres.
-        </p>
+const tagStyle = (color) => ({
+  display: 'inline-block',
+  padding: '0.2rem 0.6rem',
+  fontSize: '0.62rem',
+  fontWeight: 700,
+  letterSpacing: '0.12em',
+  textTransform: 'uppercase',
+  fontFamily: "'Outfit', sans-serif",
+  color,
+  border: `1px solid ${color}44`,
+  background: `${color}14`,
+  borderRadius: '2px',
+});
 
-        <div className="space-y-12">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`${darkMode ? 'bg-gray-900/70 border-gray-800' : 'bg-white border-gray-200'} rounded-2xl overflow-hidden border backdrop-blur-sm hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300`}
-            >
-              <div className="md:flex">
-                <div className="md:w-2/5 relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-64 md:h-full object-contain hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="md:w-3/5 p-8">
-                  <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
+const ProjectCard = ({ project, index }) => (
+  <>
+    <style>{`
+      .pc-inner-${index} {
+        display: flex;
+        flex-direction: column;
+        min-height: 340px;
+      }
+      @media (min-width: 768px) {
+        .pc-inner-${index} {
+          flex-direction: ${index % 2 === 0 ? 'row' : 'row-reverse'};
+        }
+      }
+    `}</style>
 
-                  <div className="space-y-3 mb-6">
-                    <div>
-                      <span className="text-red-400 font-semibold">→ Problème : </span>
-                      <span className={darkMode ? 'text-gray-300' : 'text-gray-600'}>{project.problem}</span>
-                    </div>
-                    <div>
-                      <span className="text-yellow-400 font-semibold">→ Solution : </span>
-                      <span className={darkMode ? 'text-gray-300' : 'text-gray-600'}>{project.solution}</span>
-                    </div>
-                    <div>
-                      <span className="text-green-400 font-semibold">→ Résultat : </span>
-                      <span className={`font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{project.result}</span>
-                    </div>
-                  </div>
+    <div className={`card pc-inner-${index}`} style={{ background: 'var(--surface)' }}>
+      {/* Image panel */}
+      <div style={{
+        flex: '0 0 42%',
+        overflow: 'hidden',
+        background: 'var(--surface-2)',
+        position: 'relative',
+        minHeight: '220px',
+      }}>
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            transition: 'transform 0.6s ease',
+            display: 'block',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        />
+        <span
+          className="font-display"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            left: '1.25rem',
+            fontSize: '4.5rem',
+            fontWeight: 300,
+            color: 'var(--gold)',
+            opacity: 0.12,
+            lineHeight: 1,
+            userSelect: 'none',
+            pointerEvents: 'none',
+          }}
+        >
+          {String(index + 1).padStart(2, '0')}
+        </span>
+      </div>
 
-                  <div className={`${darkMode ? 'bg-blue-500/10 border-blue-500/30' : 'bg-blue-50 border-blue-200'} border-l-4 p-4 mb-6 italic`}>
-                    <p className="mb-2">"{project.testimonial}"</p>
-                    <p className="text-sm text-gray-400">— {project.author}</p>
-                  </div>
+      {/* Content panel */}
+      <div style={{ flex: 1, padding: '2.5rem', display: 'flex', flexDirection: 'column' }}>
+        <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '1.75rem', lineHeight: 1.35 }}>
+          {project.title}
+        </h3>
 
-                  <div className="flex flex-wrap gap-4">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg font-semibold hover:shadow-lg transition-all inline-flex items-center gap-2"
-                    >
-                      <ExternalLink size={18} />
-                      Voir le site
-                    </a>
-                    <span
-                      title="Bientôt disponible"
-                      className={`px-6 py-3 ${darkMode ? 'bg-gray-800/50 text-gray-500' : 'bg-gray-200/50 text-gray-400'} rounded-lg font-semibold inline-flex items-center gap-2 cursor-not-allowed`}
-                    >
-                      <Code size={18} />
-                      Étude de cas (bientôt)
-                    </span>
-                  </div>
-                </div>
-              </div>
+        {/* PSR */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem', flex: 1 }}>
+          {[
+            { label: 'Problème', color: 'var(--red)', text: project.problem, bold: false },
+            { label: 'Solution', color: 'var(--gold)', text: project.solution, bold: false },
+            { label: 'Résultat', color: 'var(--green)', text: project.result, bold: true },
+          ].map(({ label, color, text, bold }) => (
+            <div key={label} style={{ paddingLeft: '0.9rem', borderLeft: `2px solid ${color}` }}>
+              <span style={tagStyle(color)}>{label}</span>
+              <p style={{
+                fontSize: '0.87rem',
+                color: bold ? 'var(--text)' : 'var(--text-muted)',
+                fontWeight: bold ? 600 : 400,
+                lineHeight: 1.65,
+                marginTop: '0.3rem',
+              }}>
+                {text}
+              </p>
             </div>
+          ))}
+        </div>
+
+        {/* Testimonial */}
+        <blockquote style={{
+          background: 'var(--surface-2)',
+          borderLeft: '2px solid var(--border-hover)',
+          padding: '1rem 1.25rem',
+          marginBottom: '1.75rem',
+        }}>
+          <p style={{ fontStyle: 'italic', fontSize: '0.87rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '0.4rem' }}>
+            "{project.testimonial}"
+          </p>
+          <cite style={{ fontSize: '0.75rem', color: 'var(--gold)', fontStyle: 'normal', fontWeight: 600 }}>
+            — {project.author}
+          </cite>
+        </blockquote>
+
+        {/* Actions */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold"
+            style={{ textDecoration: 'none', fontSize: '0.75rem' }}
+          >
+            <ExternalLink size={14} />
+            Voir le site
+          </a>
+          <span
+            title="Bientôt disponible"
+            className="btn-outline"
+            style={{ fontSize: '0.75rem', opacity: 0.4, cursor: 'not-allowed' }}
+          >
+            <Code size={14} />
+            Étude de cas (bientôt)
+          </span>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+const Projects = () => {
+  return (
+    <section id="projects" style={{ padding: '6rem 2rem' }}>
+      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="section-label">Réalisations</span>
+          <h2
+            className="font-display"
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+          >
+            Projets &amp; résultats concrets
+          </h2>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+            Pas de bla-bla. Juste des chiffres.
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', background: 'var(--border)' }}>
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>

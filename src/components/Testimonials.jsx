@@ -1,47 +1,104 @@
 import { Star, Linkedin } from 'lucide-react';
 import { testimonials } from '../data/testimonials';
 
-const Testimonials = ({ darkMode }) => {
+const Testimonials = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-transparent to-blue-500/5">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Ce que mes clients disent (vraiment)
-        </h2>
-        <p className="text-xl text-gray-400 text-center mb-16">
-          Pas de faux témoignages. De vraies personnes.
-        </p>
+    <section style={{ padding: '6rem 2rem' }}>
+      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="section-label">Témoignages</span>
+          <h2
+            className="font-display"
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+          >
+            Ce que mes clients disent
+          </h2>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+            Pas de faux témoignages. De vraies personnes.
+          </p>
+        </div>
+
+        {/* Testimonial cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
+          gap: '1.5px',
+          background: 'var(--border)',
+        }}>
+          {testimonials.map((t, index) => (
             <div
               key={index}
-              className={`${darkMode ? 'bg-gray-900/70 border-gray-800' : 'bg-white border-gray-200'} p-8 rounded-2xl border backdrop-blur-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300`}
+              className="card"
+              style={{ padding: '2.5rem', background: 'var(--surface)', display: 'flex', flexDirection: 'column' }}
             >
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="fill-yellow-400 text-yellow-400" size={20} />
+              {/* Stars */}
+              <div style={{ display: 'flex', gap: '3px', marginBottom: '1.25rem' }}>
+                {[...Array(t.rating)].map((_, i) => (
+                  <Star key={i} size={14} style={{ fill: 'var(--gold)', color: 'var(--gold)' }} />
                 ))}
               </div>
-              <p className={`mb-6 leading-relaxed italic ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                "{testimonial.text}"
+
+              {/* Quote mark */}
+              <span className="quote-mark" aria-hidden="true">"</span>
+
+              {/* Quote text */}
+              <p style={{
+                fontStyle: 'italic',
+                fontSize: '0.92rem',
+                color: 'var(--text-muted)',
+                lineHeight: 1.75,
+                flex: 1,
+                marginBottom: '1.75rem',
+              }}>
+                {t.text}
               </p>
-              <div className={`border-t pt-4 ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-                <p className="font-semibold">{testimonial.author}</p>
-                <p className="text-sm text-gray-400">{testimonial.role}</p>
+
+              {/* Author */}
+              <div style={{
+                paddingTop: '1.25rem',
+                borderTop: '1px solid var(--border)',
+              }}>
+                <p style={{ fontWeight: 600, fontSize: '0.92rem', marginBottom: '0.2rem' }}>{t.author}</p>
+                <p style={{ fontSize: '0.78rem', color: 'var(--gold)' }}>{t.role}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* LinkedIn link */}
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
           <a
             href="https://www.linkedin.com/in/mokhmad-noutsoulkhanov-b74a56258/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold text-lg transition-colors"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontSize: '0.78rem',
+              fontWeight: 500,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+              textDecoration: 'none',
+              padding: '0.5rem 0',
+              borderBottom: '1px solid var(--border)',
+              transition: 'color 0.2s, border-color 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--gold)';
+              e.currentTarget.style.borderBottomColor = 'var(--border-hover)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--text-muted)';
+              e.currentTarget.style.borderBottomColor = 'var(--border)';
+            }}
           >
-            <Linkedin size={24} />
+            <Linkedin size={15} />
             Voir tous les témoignages sur LinkedIn
           </a>
         </div>

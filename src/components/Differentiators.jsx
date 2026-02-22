@@ -1,41 +1,98 @@
-import { ArrowRight, Clock, DollarSign, MessageSquare, TrendingUp } from 'lucide-react';
+import { Clock, DollarSign, MessageSquare, TrendingUp, ArrowRight } from 'lucide-react';
 import { differentiators } from '../data/differentiators';
 
 const iconMap = { Clock, DollarSign, MessageSquare, TrendingUp };
 
-const Differentiators = ({ darkMode, scrollToSection }) => {
+const Differentiators = ({ scrollToSection }) => {
   return (
-    <section id="differentiators" className="py-20 px-4 bg-gradient-to-b from-transparent to-blue-500/5">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Ce qui me différencie des autres développeurs
-        </h2>
-        <p className="text-xl text-gray-400 text-center mb-16 max-w-3xl mx-auto">
-          Vous n'avez pas besoin d'un CV. Vous avez besoin de résultats.
-        </p>
+    <section id="differentiators" style={{ padding: '6rem 2rem' }}>
+      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
 
-        <div className="grid md:grid-cols-2 gap-8">
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="section-label">Pourquoi moi</span>
+          <h2
+            className="font-display"
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+          >
+            Ce qui me différencie
+          </h2>
+          <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '480px', margin: '0 auto' }}>
+            Vous n'avez pas besoin d'un CV. Vous avez besoin de résultats.
+          </p>
+        </div>
+
+        {/* Cards grid */}
+        <div className="diff-grid" style={{ gap: '1.5px', background: 'var(--border)' }}>
           {differentiators.map((diff, index) => {
             const Icon = iconMap[diff.iconName];
             return (
               <div
                 key={index}
-                className={`${darkMode ? 'bg-gray-900/70 border-gray-800 hover:border-blue-500/50' : 'bg-white border-gray-200 hover:border-blue-500'} p-8 rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-1`}
+                className="card"
+                style={{ padding: '2.5rem', background: 'var(--surface)' }}
               >
-                <div className="text-blue-400 mb-4"><Icon className="w-8 h-8" /></div>
-                <h3 className="text-xl font-bold mb-3">{diff.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{diff.description}</p>
+                {/* Number + Icon */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                  <span
+                    className="font-display"
+                    style={{
+                      fontSize: '3.5rem',
+                      fontWeight: 300,
+                      color: 'var(--text-dim)',
+                      lineHeight: 1,
+                      opacity: 0.5,
+                    }}
+                  >
+                    0{index + 1}
+                  </span>
+                  <div style={{
+                    padding: '0.6rem',
+                    background: 'var(--gold-glow)',
+                    border: '1px solid var(--border-hover)',
+                    color: 'var(--gold)',
+                  }}>
+                    <Icon size={20} />
+                  </div>
+                </div>
+
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.75rem', lineHeight: 1.4 }}>
+                  {diff.title}
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                  {diff.description}
+                </p>
               </div>
             );
           })}
         </div>
 
-        <div className="text-center mt-12">
+        {/* CTA */}
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
           <button
             onClick={() => scrollToSection('problems')}
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold text-lg transition-colors"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--gold)',
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '0.82rem',
+              fontWeight: 500,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.5rem 0',
+              borderBottom: '1px solid var(--border-hover)',
+              transition: 'color 0.2s, border-color 0.2s',
+            }}
           >
-            Ces promesses vous parlent ? Voyons comment je peux vous aider <ArrowRight />
+            Ces promesses vous parlent ? Voyons comment je peux vous aider
+            <ArrowRight size={15} />
           </button>
         </div>
       </div>

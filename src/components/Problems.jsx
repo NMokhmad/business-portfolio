@@ -1,49 +1,75 @@
 import { ArrowRight } from 'lucide-react';
 import { problems } from '../data/problems';
 
-const Problems = ({ darkMode, scrollToContact }) => {
+const Problems = ({ scrollToContact }) => {
   return (
-    <section id="problems" className="py-20 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Vous êtes peut-être dans l'une de ces situations :
-        </h2>
-        <p className="text-xl text-gray-400 text-center mb-16">
-          Spoiler : je peux vous aider
-        </p>
+    <section id="problems" style={{ padding: '6rem 2rem' }}>
+      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
 
-        <div className="space-y-6">
+      <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="section-label">Vos situations</span>
+          <h2
+            className="font-display"
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 700, marginBottom: '1rem' }}
+          >
+            Vous vous reconnaissez ?
+          </h2>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+            Spoiler : je peux vous aider.
+          </p>
+        </div>
+
+        {/* Problems list */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'var(--border)' }}>
           {problems.map((item, index) => (
             <div
               key={index}
-              className={`${darkMode ? 'bg-gray-900/50 border-gray-800' : 'bg-white border-gray-200'} p-6 md:p-8 rounded-2xl border backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300`}
+              style={{
+                background: 'var(--surface)',
+                padding: '1.75rem 2rem',
+                display: 'flex',
+                gap: '1.25rem',
+                alignItems: 'flex-start',
+                transition: 'background 0.25s',
+                borderLeft: '3px solid transparent',
+                cursor: 'default',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderLeftColor = 'var(--gold)';
+                e.currentTarget.style.background = 'var(--surface-2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderLeftColor = 'transparent';
+                e.currentTarget.style.background = 'var(--surface)';
+              }}
             >
-              <div className="flex items-start gap-4">
-                <span className="text-4xl flex-shrink-0">{item.emoji}</span>
-                <div>
-                  <p className={`text-lg md:text-xl font-semibold mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
-                    "{item.problem}"
-                  </p>
-                  <p className="text-blue-400 flex items-start gap-2">
-                    <ArrowRight className="flex-shrink-0 mt-1" size={20} />
-                    <span>{item.solution}</span>
-                  </p>
-                </div>
+              <span style={{ fontSize: '1.75rem', lineHeight: 1, flexShrink: 0 }}>{item.emoji}</span>
+              <div>
+                <p style={{ fontSize: '1rem', fontWeight: 500, marginBottom: '0.5rem', color: 'var(--text)', lineHeight: 1.5 }}>
+                  "{item.problem}"
+                </p>
+                <p style={{ fontSize: '0.88rem', color: 'var(--gold)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: 1.6 }}>
+                  <ArrowRight size={15} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  {item.solution}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className={`text-xl mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Si vous vous reconnaissez dans l'un de ces scénarios,<br/>
-            <strong>parlons-en 15 minutes. Sans engagement.</strong>
+        {/* CTA */}
+        <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1.75rem', lineHeight: 1.7 }}>
+            Si vous vous reconnaissez dans l'un de ces scénarios,{' '}
+            <strong style={{ color: 'var(--text)', fontWeight: 600 }}>
+              parlons-en 15 minutes. Sans engagement.
+            </strong>
           </p>
-          <button
-            onClick={scrollToContact}
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all inline-flex items-center gap-2"
-          >
-            Réserver un appel découverte gratuit <ArrowRight />
+          <button onClick={scrollToContact} className="btn-gold">
+            Réserver un appel découverte gratuit <ArrowRight size={16} />
           </button>
         </div>
       </div>

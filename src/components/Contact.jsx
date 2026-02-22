@@ -2,7 +2,15 @@ import { useRef, useState } from 'react';
 import { Github, Linkedin, Mail, CheckCircle, ArrowRight } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-const Contact = ({ darkMode }) => {
+const steps = [
+  'Vous remplissez le formulaire (30 secondes)',
+  'Je vous réponds sous 24h',
+  'Appel découverte gratuit 15–30 min',
+  'Devis clair sous 24h si ça matche',
+  'Vous décidez. Zéro pression.',
+];
+
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '', email: '', project: '', budget: '', source: ''
   });
@@ -29,177 +37,199 @@ const Contact = ({ darkMode }) => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-b from-transparent to-blue-500/5">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-          Prêt à transformer votre idée en réalité ?
-        </h2>
-        <p className="text-xl text-gray-400 text-center mb-12">
-          Voici ce qui se passe ensuite :
-        </p>
+    <section id="contact" style={{ padding: '6rem 2rem' }}>
+      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
 
-        <div className={`${darkMode ? 'bg-blue-500/10 border-blue-500/30' : 'bg-blue-50 border-blue-200'} border-l-4 p-6 mb-12 space-y-2`}>
-          <p className="flex items-start gap-2">
-            <span className="font-bold text-blue-400">1️⃣</span>
-            <span>Vous remplissez le formulaire ci-dessous (30 secondes)</span>
-          </p>
-          <p className="flex items-start gap-2">
-            <span className="font-bold text-blue-400">2️⃣</span>
-            <span>Je vous réponds sous 24h (souvent plus rapide)</span>
-          </p>
-          <p className="flex items-start gap-2">
-            <span className="font-bold text-blue-400">3️⃣</span>
-            <span>On fixe un appel découverte de 15-30min (gratuit, sans engagement)</span>
-          </p>
-          <p className="flex items-start gap-2">
-            <span className="font-bold text-blue-400">4️⃣</span>
-            <span>Si ça match, je vous envoie un devis clair sous 24h</span>
-          </p>
-          <p className="flex items-start gap-2">
-            <span className="font-bold text-blue-400">5️⃣</span>
-            <span>Vous décidez. Zéro pression.</span>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="section-label">Contact</span>
+          <h2
+            className="font-display"
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+          >
+            Prêt à transformer votre idée ?
+          </h2>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+            Voici ce qui se passe ensuite :
           </p>
         </div>
 
-        <div className={`${darkMode ? 'bg-gray-900/70 border-gray-800' : 'bg-white border-gray-200'} p-8 md:p-12 rounded-2xl border backdrop-blur-sm shadow-2xl`}>
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block mb-2 font-semibold text-lg">Votre prénom *</label>
-              <input
-                type="text"
-                name="user_name"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                className={`w-full px-4 py-4 rounded-lg text-lg ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-300'} border-2 focus:outline-none focus:border-blue-500 transition-colors`}
-                placeholder="Mokhmad"
-              />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '3rem', alignItems: 'start' }}>
+
+          {/* Left: steps + trust + social */}
+          <div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+              {steps.map((step, i) => (
+                <div key={i} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
+                    <div style={{
+                      width: '32px', height: '32px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      border: '1px solid var(--border-hover)',
+                      background: 'var(--gold-glow)',
+                      color: 'var(--gold)',
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: '1rem', fontWeight: 600, flexShrink: 0,
+                    }}>
+                      {i + 1}
+                    </div>
+                    {i < steps.length - 1 && (
+                      <div style={{ width: '1px', height: '36px', background: 'var(--border)', marginTop: '2px', marginBottom: '2px' }} />
+                    )}
+                  </div>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, paddingTop: '0.35rem' }}>
+                    {step}
+                  </p>
+                </div>
+              ))}
             </div>
 
-            <div>
-              <label className="block mb-2 font-semibold text-lg">Votre email *</label>
-              <input
-                type="email"
-                name="user_email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-                className={`w-full px-4 py-4 rounded-lg text-lg ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-300'} border-2 focus:outline-none focus:border-blue-500 transition-colors`}
-                placeholder="Mokhmad@email.com"
-              />
+            <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              {['Réponse sous 24h garantie', 'Appel découverte 100% gratuit', 'Aucune obligation'].map((badge) => (
+                <div key={badge} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  <CheckCircle size={14} style={{ color: 'var(--green)', flexShrink: 0 }} />
+                  {badge}
+                </div>
+              ))}
             </div>
 
-            <div>
-              <label className="block mb-2 font-semibold text-lg">Votre projet en 2-3 lignes *</label>
-              <textarea
-                name="message"
-                required
-                value={formData.project}
-                onChange={(e) => setFormData({...formData, project: e.target.value})}
-                rows={4}
-                className={`w-full px-4 py-4 rounded-lg text-lg ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-300'} border-2 focus:outline-none focus:border-blue-500 transition-colors resize-none`}
-                placeholder="Ex: J'ai besoin d'un site vitrine pour mon activité de coach. Mon site actuel est obsolète et ne génère aucun contact..."
-              />
-            </div>
-
-            <div>
-              <label className="block mb-2 font-semibold text-lg">Budget estimé (optionnel)</label>
-              <select
-                name="budget"
-                value={formData.budget}
-                onChange={(e) => setFormData({...formData, budget: e.target.value})}
-                className={`w-full px-4 py-4 rounded-lg text-lg ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-300'} border-2 focus:outline-none focus:border-blue-500 transition-colors`}
-              >
-                <option value="">Sélectionnez une fourchette</option>
-                <option value="< 2000€">Moins de 2 000€</option>
-                <option value="2000-5000€">2 000 - 5 000€</option>
-                <option value="5000-10000€">5 000 - 10 000€</option>
-                <option value="> 10000€">Plus de 10 000€</option>
-                <option value="Je ne sais pas">Je ne sais pas encore</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block mb-2 font-semibold text-lg">Comment m'avez-vous trouvé ? (optionnel)</label>
-              <input
-                type="text"
-                name="source"
-                value={formData.source}
-                onChange={(e) => setFormData({...formData, source: e.target.value})}
-                className={`w-full px-4 py-4 rounded-lg text-lg ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-300'} border-2 focus:outline-none focus:border-blue-500 transition-colors`}
-                placeholder="LinkedIn, Google, Bouche-à-oreille..."
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={formStatus === 'sending'}
-              className={`w-full px-8 py-5 rounded-lg font-bold text-xl transition-all duration-300 flex items-center justify-center gap-2 ${
-                formStatus === 'sending'
-                  ? 'bg-gray-500 cursor-wait'
-                  : formStatus === 'sent'
-                    ? 'bg-green-500'
-                    : formStatus === 'error'
-                      ? 'bg-red-500 hover:bg-red-600'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-400 hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105'
-              }`}
-            >
-              {formStatus === 'sending' && 'Envoi en cours...'}
-              {formStatus === 'sent' && <><CheckCircle size={24} /> Message envoyé ! Je vous réponds sous 24h.</>}
-              {formStatus === 'error' && 'Erreur. Réessayez ou contactez-moi par email.'}
-              {formStatus === 'idle' && <>Démarrer mon projet <ArrowRight size={24} /></>}
-            </button>
-
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 pt-4">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="text-green-500" size={18} />
-                <span>Réponse sous 24h garantie</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="text-green-500" size={18} />
-                <span>Appel découverte 100% gratuit</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="text-green-500" size={18} />
-                <span>Aucune obligation</span>
+            <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid var(--border)' }}>
+              <p style={{ fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem', fontFamily: "'Outfit', sans-serif" }}>
+                Ou contactez-moi directement
+              </p>
+              <div style={{ display: 'flex', gap: '0.75rem' }}>
+                {[
+                  { href: 'https://github.com/NMokhmad', icon: <Github size={17} />, label: 'GitHub' },
+                  { href: 'https://www.linkedin.com/in/mokhmad-noutsoulkhanov-b74a56258/', icon: <Linkedin size={17} />, label: 'LinkedIn' },
+                  { href: 'mailto:n.mokhmad@gmail.com', icon: <Mail size={17} />, label: 'Email' },
+                ].map(({ href, icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith('mailto') ? undefined : '_blank'}
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      width: '40px', height: '40px',
+                      border: '1px solid var(--border)',
+                      color: 'var(--text-muted)',
+                      textDecoration: 'none',
+                      transition: 'border-color 0.2s, color 0.2s',
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)'; }}
+                  >
+                    {icon}
+                  </a>
+                ))}
               </div>
             </div>
-          </form>
+          </div>
 
-          <div className={`mt-12 pt-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-            <p className="text-center text-gray-400 mb-6">Ou contactez-moi directement :</p>
-            <div className="flex justify-center gap-6">
-              <a
-                href="https://github.com/NMokhmad"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-4 rounded-lg transition-colors hover:scale-110 transform duration-200 ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'}`}
+          {/* Right: Form */}
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', padding: '2.5rem' }}>
+            <form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
+                  Votre prénom *
+                </label>
+                <input
+                  type="text" name="user_name" required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="form-input" placeholder="Mokhmad"
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
+                  Votre email *
+                </label>
+                <input
+                  type="email" name="user_email" required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="form-input" placeholder="vous@email.com"
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
+                  Votre projet *
+                </label>
+                <textarea
+                  name="message" required
+                  value={formData.project}
+                  onChange={(e) => setFormData({ ...formData, project: e.target.value })}
+                  rows={4} className="form-input" style={{ resize: 'none' }}
+                  placeholder="Décrivez votre projet en 2–3 lignes…"
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
+                  Budget estimé
+                </label>
+                <select
+                  name="budget"
+                  value={formData.budget}
+                  onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                  className="form-input" style={{ cursor: 'pointer' }}
+                >
+                  <option value="">Sélectionnez une fourchette</option>
+                  <option value="< 2000€">Moins de 2 000€</option>
+                  <option value="2000-5000€">2 000 – 5 000€</option>
+                  <option value="5000-10000€">5 000 – 10 000€</option>
+                  <option value="> 10000€">Plus de 10 000€</option>
+                  <option value="Je ne sais pas">Je ne sais pas encore</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
+                  Comment m'avez-vous trouvé ?
+                </label>
+                <input
+                  type="text" name="source"
+                  value={formData.source}
+                  onChange={(e) => setFormData({ ...formData, source: e.target.value })}
+                  className="form-input" placeholder="LinkedIn, Google, Bouche-à-oreille…"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={formStatus === 'sending'}
+                className="btn-gold"
+                style={{
+                  width: '100%', justifyContent: 'center', marginTop: '0.5rem',
+                  background: formStatus === 'sent' ? '#3a8a58' : formStatus === 'error' ? '#c04040' : undefined,
+                }}
               >
-                <Github size={28} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/mokhmad-noutsoulkhanov-b74a56258/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-4 rounded-lg transition-colors hover:scale-110 transform duration-200 ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'}`}
-              >
-                <Linkedin size={28} />
-              </a>
-              <a
-                href="mailto:n.mokhmad@gmail.com"
-                className={`p-4 rounded-lg transition-colors hover:scale-110 transform duration-200 ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-200 hover:bg-gray-300'}`}
-              >
-                <Mail size={28} />
-              </a>
-            </div>
+                {formStatus === 'idle' && (<>Démarrer mon projet <ArrowRight size={16} /></>)}
+                {formStatus === 'sending' && 'Envoi en cours…'}
+                {formStatus === 'sent' && (<><CheckCircle size={16} /> Message envoyé ! Je réponds sous 24h.</>)}
+                {formStatus === 'error' && 'Erreur — réessayez ou contactez-moi par email.'}
+              </button>
+            </form>
           </div>
         </div>
 
-        <div className={`${darkMode ? 'bg-yellow-500/10 border-yellow-500/30' : 'bg-yellow-50 border-yellow-200'} border-l-4 p-6 mt-8 text-center`}>
-          <p className="text-lg">
-            <strong>P.S. :</strong> Mon agenda se remplit vite. Si vous reportez à "plus tard",
-            je risque de ne plus avoir de créneaux ce mois-ci. <strong>Réservez votre appel maintenant.</strong>
-          </p>
+        {/* Urgency */}
+        <div style={{
+          marginTop: '3rem', padding: '1.25rem 2rem',
+          border: '1px solid var(--border-hover)',
+          background: 'var(--gold-glow)',
+          textAlign: 'center',
+          fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7,
+        }}>
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>P.S. :</strong>{' '}
+          Mon agenda se remplit vite. Si vous reportez à "plus tard", je risque de ne plus avoir de créneaux ce mois-ci.{' '}
+          <strong style={{ color: 'var(--gold)', fontWeight: 600 }}>Réservez votre appel maintenant.</strong>
         </div>
       </div>
     </section>
