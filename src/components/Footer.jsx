@@ -1,3 +1,5 @@
+import { Github, Linkedin } from 'lucide-react';
+
 const Footer = ({ scrollToSection, scrollToContact }) => {
   const navItems = [
     { label: 'Pourquoi moi', id: 'differentiators' },
@@ -21,8 +23,34 @@ const Footer = ({ scrollToSection, scrollToContact }) => {
               Mokhmad
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', maxWidth: '280px', lineHeight: 1.65 }}>
-              Développeur web fullstack — Je transforme vos idées en solutions qui génèrent des résultats.
+              Développeur Fullstack — React · Node.js · PostgreSQL · Disponible pour un CDI.
             </p>
+            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
+              {[
+                { href: 'https://github.com/NMokhmad', icon: <Github size={16} />, label: 'GitHub' },
+                { href: 'https://www.linkedin.com/in/mokhmad-noutsoulkhanov-b74a56258/', icon: <Linkedin size={16} />, label: 'LinkedIn' },
+              ].map(({ href, icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    width: '36px', height: '36px',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    transition: 'border-color 0.2s, color 0.2s',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)'; }}
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Nav */}

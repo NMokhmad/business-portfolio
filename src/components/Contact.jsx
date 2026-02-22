@@ -5,14 +5,13 @@ import emailjs from '@emailjs/browser';
 const steps = [
   'Vous remplissez le formulaire (30 secondes)',
   'Je vous réponds sous 24h',
-  'Appel découverte gratuit 15–30 min',
-  'Devis clair sous 24h si ça matche',
-  'Vous décidez. Zéro pression.',
+  'On échange 15–30 min pour se découvrir',
+  'Si ça matche, on avance ensemble',
 ];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '', email: '', project: '', budget: '', source: ''
+    name: '', email: '', project: '', source: ''
   });
   const [formStatus, setFormStatus] = useState('idle');
   const formRef = useRef();
@@ -29,7 +28,7 @@ const Contact = () => {
     )
       .then(() => {
         setFormStatus('sent');
-        setFormData({ name: '', email: '', project: '', budget: '', source: '' });
+        setFormData({ name: '', email: '', project: '', source: '' });
       })
       .catch(() => {
         setFormStatus('error');
@@ -49,10 +48,10 @@ const Contact = () => {
             className="font-display"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
           >
-            Prêt à transformer votre idée ?
+            Discutons de votre besoin
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
-            Voici ce qui se passe ensuite :
+            Voici comment ça se passe :
           </p>
         </div>
 
@@ -87,7 +86,7 @@ const Contact = () => {
             </div>
 
             <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {['Réponse sous 24h garantie', 'Appel découverte 100% gratuit', 'Aucune obligation'].map((badge) => (
+              {['Réponse sous 24h', 'Appel découverte gratuit', 'Aucune obligation'].map((badge) => (
                 <div key={badge} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   <CheckCircle size={14} style={{ color: 'var(--green)', flexShrink: 0 }} />
                   {badge}
@@ -96,6 +95,16 @@ const Contact = () => {
             </div>
 
             <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid var(--border)' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="btn-outline"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', textDecoration: 'none' }}
+                >
+                  Télécharger mon CV (PDF)
+                </a>
+              </div>
               <p style={{ fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem', fontFamily: "'Outfit', sans-serif" }}>
                 Ou contactez-moi directement
               </p>
@@ -159,34 +168,15 @@ const Contact = () => {
 
               <div>
                 <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
-                  Votre projet *
+                  Votre message *
                 </label>
                 <textarea
                   name="message" required
                   value={formData.project}
                   onChange={(e) => setFormData({ ...formData, project: e.target.value })}
                   rows={4} className="form-input" style={{ resize: 'none' }}
-                  placeholder="Décrivez votre projet en 2–3 lignes…"
+                  placeholder="Présentez-vous, votre contexte, ce que vous cherchez…"
                 />
-              </div>
-
-              <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', fontFamily: "'Outfit', sans-serif" }}>
-                  Budget estimé
-                </label>
-                <select
-                  name="budget"
-                  value={formData.budget}
-                  onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  className="form-input" style={{ cursor: 'pointer' }}
-                >
-                  <option value="">Sélectionnez une fourchette</option>
-                  <option value="< 2000€">Moins de 2 000€</option>
-                  <option value="2000-5000€">2 000 – 5 000€</option>
-                  <option value="5000-10000€">5 000 – 10 000€</option>
-                  <option value="> 10000€">Plus de 10 000€</option>
-                  <option value="Je ne sais pas">Je ne sais pas encore</option>
-                </select>
               </div>
 
               <div>
@@ -210,7 +200,7 @@ const Contact = () => {
                   background: formStatus === 'sent' ? '#3a8a58' : formStatus === 'error' ? '#c04040' : undefined,
                 }}
               >
-                {formStatus === 'idle' && (<>Démarrer mon projet <ArrowRight size={16} /></>)}
+                {formStatus === 'idle' && (<>Envoyer mon message <ArrowRight size={16} /></>)}
                 {formStatus === 'sending' && 'Envoi en cours…'}
                 {formStatus === 'sent' && (<><CheckCircle size={16} /> Message envoyé ! Je réponds sous 24h.</>)}
                 {formStatus === 'error' && 'Erreur — réessayez ou contactez-moi par email.'}
@@ -219,18 +209,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Urgency */}
-        <div style={{
-          marginTop: '3rem', padding: '1.25rem 2rem',
-          border: '1px solid var(--border-hover)',
-          background: 'var(--gold-glow)',
-          textAlign: 'center',
-          fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7,
-        }}>
-          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>P.S. :</strong>{' '}
-          Mon agenda se remplit vite. Si vous reportez à "plus tard", je risque de ne plus avoir de créneaux ce mois-ci.{' '}
-          <strong style={{ color: 'var(--gold)', fontWeight: 600 }}>Réservez votre appel maintenant.</strong>
-        </div>
       </div>
     </section>
   );

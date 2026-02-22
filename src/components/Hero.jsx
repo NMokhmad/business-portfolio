@@ -66,9 +66,7 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             lineHeight: 1.05,
           }}
         >
-          Votre site vous fait{' '}
-          <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>perdre des clients</span>
-          {' '}?
+          Développeur Fullstack
         </h1>
 
         {/* Subheading */}
@@ -77,13 +75,12 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
           style={{
             fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)',
             fontWeight: 400,
-            fontStyle: 'italic',
-            color: 'var(--gold)',
+            color: 'var(--text-muted)',
             marginBottom: '1.25rem',
             lineHeight: 1.2,
           }}
         >
-          Je transforme les visiteurs en clients payants.
+          Je conçois et livre des applications web robustes, du front React au back Node.js.
         </p>
 
         {/* Description */}
@@ -97,9 +94,9 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             lineHeight: 1.7,
           }}
         >
-          Développeur web spécialisé en solutions qui génèrent des{' '}
-          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>résultats business</strong>.{' '}
-          Pas de jargon. Pas de retards. Juste des sites qui travaillent pour vous 24/7.
+          Disponible pour un{' '}
+          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>CDI</strong>{' '}
+          — j'apporte une vision technique claire et un sens des priorités business.
         </p>
 
         {/* CTAs */}
@@ -107,11 +104,11 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
           className="animate-fade-up d6"
           style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '3.5rem' }}
         >
-          <button onClick={scrollToContact} className="btn-gold" style={{ fontSize: '0.82rem' }}>
-            Discuter de votre projet <ArrowRight size={16} />
-          </button>
-          <button onClick={() => scrollToSection('projects')} className="btn-outline" style={{ fontSize: '0.82rem' }}>
-            Voir mes réalisations
+          <a href="/cv.pdf" download className="btn-gold" style={{ fontSize: '0.82rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            Télécharger mon CV <ArrowRight size={16} />
+          </a>
+          <button onClick={scrollToContact} className="btn-outline" style={{ fontSize: '0.82rem' }}>
+            Me contacter
           </button>
         </div>
 
@@ -126,9 +123,9 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
           }}
         >
           {[
-            'Livraison en 2–4 semaines',
-            'Support inclus 30 jours',
-            'Satisfait ou remboursé',
+            'React · Node.js · PostgreSQL',
+            'GitHub actif',
+            'Disponible pour CDI',
           ].map((badge) => (
             <div
               key={badge}

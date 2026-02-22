@@ -1,7 +1,7 @@
-import { Clock, DollarSign, MessageSquare, TrendingUp, ArrowRight } from 'lucide-react';
+import { Code2, Users, Zap, TrendingUp, ArrowRight } from 'lucide-react';
 import { differentiators } from '../data/differentiators';
 
-const iconMap = { Clock, DollarSign, MessageSquare, TrendingUp };
+const iconMap = { Code2, Users, Zap, TrendingUp };
 
 const Differentiators = ({ scrollToSection }) => {
   return (
@@ -12,15 +12,15 @@ const Differentiators = ({ scrollToSection }) => {
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <span className="section-label">Pourquoi moi</span>
+          <span className="section-label">Ce que j'apporte</span>
           <h2
             className="font-display"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
           >
-            Ce qui me différencie
+            Ce que j'apporte à une équipe
           </h2>
           <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '480px', margin: '0 auto' }}>
-            Vous n'avez pas besoin d'un CV. Vous avez besoin de résultats.
+            Des atouts concrets pour m'intégrer dans votre équipe et contribuer dès le premier jour.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ const Differentiators = ({ scrollToSection }) => {
         {/* CTA */}
         <div style={{ textAlign: 'center', marginTop: '3rem' }}>
           <button
-            onClick={() => scrollToSection('problems')}
+            onClick={() => scrollToSection('skills')}
             style={{
               background: 'none',
               border: 'none',
@@ -91,7 +91,7 @@ const Differentiators = ({ scrollToSection }) => {
               transition: 'color 0.2s, border-color 0.2s',
             }}
           >
-            Ces promesses vous parlent ? Voyons comment je peux vous aider
+            Voir ma stack technique
             <ArrowRight size={15} />
           </button>
         </div>

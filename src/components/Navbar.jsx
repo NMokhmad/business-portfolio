@@ -1,4 +1,4 @@
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Github } from 'lucide-react';
 
 const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection, scrollToContact }) => {
   return (
@@ -17,13 +17,24 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
           {/* Desktop nav */}
           <div style={{ display: 'none' }} className="md-nav-links">
             <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-              <button onClick={() => scrollToSection('differentiators')} className="nav-link">Pourquoi moi</button>
-              <button onClick={() => scrollToSection('projects')} className="nav-link">Résultats</button>
-              <button onClick={() => scrollToSection('process')} className="nav-link">Process</button>
+              <button onClick={() => scrollToSection('differentiators')} className="nav-link">Atouts</button>
+              <button onClick={() => scrollToSection('projects')} className="nav-link">Projets</button>
+              <button onClick={() => scrollToSection('process')} className="nav-link">Méthode</button>
               <button onClick={() => scrollToSection('faq')} className="nav-link">FAQ</button>
 
+              <a
+                href="https://github.com/NMokhmad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+                aria-label="GitHub"
+              >
+                <Github size={15} /> GitHub
+              </a>
+
               <button onClick={scrollToContact} className="btn-gold" style={{ padding: '0.6rem 1.4rem' }}>
-                Démarrer un projet
+                Me contacter
               </button>
 
               <button
@@ -78,9 +89,9 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
         <div style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1.25rem 2rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
             {[
-              { label: 'Pourquoi moi', id: 'differentiators' },
-              { label: 'Résultats', id: 'projects' },
-              { label: 'Process', id: 'process' },
+              { label: 'Atouts', id: 'differentiators' },
+              { label: 'Projets', id: 'projects' },
+              { label: 'Méthode', id: 'process' },
               { label: 'FAQ', id: 'faq' },
             ].map((item) => (
               <button
@@ -108,7 +119,7 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
               className="btn-gold"
               style={{ marginTop: '1rem', justifyContent: 'center' }}
             >
-              Démarrer un projet
+              Me contacter
             </button>
           </div>
         </div>

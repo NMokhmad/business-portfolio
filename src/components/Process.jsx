@@ -10,15 +10,15 @@ const Process = ({ scrollToContact }) => {
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <span className="section-label">Comment ça marche</span>
+          <span className="section-label">Ma méthode</span>
           <h2
             className="font-display"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 700, marginBottom: '1rem' }}
           >
-            Comment on travaille ensemble
+            Ma façon de travailler
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
-            Simple et efficace.
+            Du ticket à la mise en production.
           </p>
         </div>
 
@@ -76,11 +76,11 @@ const Process = ({ scrollToContact }) => {
         {/* CTA */}
         <div style={{ textAlign: 'center', marginTop: '3.5rem', paddingTop: '3rem', borderTop: '1px solid var(--border)' }}>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1.75rem', lineHeight: 1.7 }}>
-            <strong style={{ color: 'var(--text)', fontWeight: 600 }}>Pas de mauvaise surprise. Pas de jargon.</strong>{' '}
-            Juste un projet qui avance, visiblement.
+            <strong style={{ color: 'var(--text)', fontWeight: 600 }}>Rigueur, transparence, amélioration continue.</strong>{' '}
+            Un process que j'applique sur chaque feature, dans chaque équipe.
           </p>
           <button onClick={scrollToContact} className="btn-gold">
-            Ce process vous convient ? Démarrons votre projet <ArrowRight size={16} />
+            Discuter de mon profil <ArrowRight size={16} />
           </button>
         </div>
       </div>

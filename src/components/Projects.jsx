@@ -74,9 +74,33 @@ const ProjectCard = ({ project, index }) => (
 
       {/* Content panel */}
       <div style={{ flex: 1, padding: '2.5rem', display: 'flex', flexDirection: 'column' }}>
-        <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '1.75rem', lineHeight: 1.35 }}>
+        <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem', lineHeight: 1.35 }}>
           {project.title}
         </h3>
+        {project.context && (
+          <p style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: "'Outfit', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+            {project.context}
+          </p>
+        )}
+        {project.stack && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
+            {project.stack.map((tech) => (
+              <span
+                key={tech}
+                style={{
+                  padding: '0.25rem 0.6rem',
+                  border: '1px solid var(--border)',
+                  fontSize: '0.72rem',
+                  color: 'var(--gold)',
+                  background: 'var(--gold-glow)',
+                  fontFamily: "'Outfit', sans-serif",
+                }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* PSR */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem', flex: 1 }}>
@@ -156,7 +180,7 @@ const Projects = () => {
             Projets &amp; résultats concrets
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
-            Pas de bla-bla. Juste des chiffres.
+            Des projets concrets, du code livré, des résultats mesurables.
           </p>
         </div>
 

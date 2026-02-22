@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Differentiators from './components/Differentiators';
-import Problems from './components/Problems';
+import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Process from './components/Process';
 import Testimonials from './components/Testimonials';
@@ -51,7 +51,7 @@ const PortfolioConversion = () => {
         />
         <Hero darkMode={darkMode} scrollToContact={scrollToContact} scrollToSection={scrollToSection} />
         <Differentiators darkMode={darkMode} scrollToSection={scrollToSection} />
-        <Problems darkMode={darkMode} scrollToContact={scrollToContact} />
+        <Skills />
         <Projects darkMode={darkMode} />
         <Process darkMode={darkMode} scrollToContact={scrollToContact} />
         <Testimonials darkMode={darkMode} />
