@@ -1,26 +1,26 @@
 export const faqItems = [
   {
-    question: "Combien ça coûte ?",
-    answer: "Ça dépend de la complexité, mais pour vous donner une idée :\n• Site vitrine : 1 500 - 3 000€\n• Application web simple : 3 000 - 7 000€\n• Plateforme complexe : 7 000€+\nJe vous fais un devis précis après notre appel découverte (gratuit)."
+    question: "Quel est ton niveau d'expérience ?",
+    answer: "Je suis développeur fullstack avec une expérience en React, Node.js et PostgreSQL. J'ai conçu et livré plusieurs projets de bout en bout — du design de la BDD à la mise en production. Je me situe en profil junior/médior avec une forte capacité d'autonomie."
   },
   {
-    question: "Combien de temps ça prend ?",
-    answer: "Site vitrine : 2-3 semaines\nApplication métier : 3-6 semaines\nGros projet : on découpe en phases de 4-6 semaines\nJe tiens mes délais. Si je prends du retard, je vous préviens immédiatement."
+    question: "Tu as déjà travaillé en équipe ?",
+    answer: "Oui. J'ai travaillé en équipe sur des projets collaboratifs avec Git, pull requests, code reviews et communication async. Je m'adapte aussi bien à des équipes Agile (Scrum, Kanban) qu'à des structures plus souples."
   },
   {
-    question: "Je n'ai pas de budget énorme, vous travaillez quand même avec moi ?",
-    answer: "Oui, si le projet a du sens. Je propose des solutions adaptées à votre budget. Parfois, un MVP à 2000€ vaut mieux qu'un truc à 10 000€ non utilisé."
+    question: "Tu es disponible quand ?",
+    answer: "Je suis disponible rapidement — contactez-moi pour préciser la date de démarrage souhaitée. Je peux m'adapter à vos délais."
   },
   {
-    question: "Et si je ne suis pas satisfait ?",
-    answer: "2 options :\n1. On ajuste jusqu'à ce que ça vous convienne (inclus dans le projet)\n2. Garantie satisfait ou remboursé sous 7 jours après livraison\nJe ne garde pas votre argent si vous n'êtes pas content."
+    question: "Remote, hybride ou présentiel ?",
+    answer: "Je suis ouvert aux trois formats. Je suis autonome et efficace en remote, et j'apprécie les moments en présentiel pour les phases de lancement et de collaboration intensive."
   },
   {
-    question: "Vous faites aussi la maintenance après ?",
-    answer: "Oui. 30 jours inclus gratuit, puis forfait mensuel optionnel (150-300€/mois). Mais je vous forme aussi pour que vous soyez autonome si vous préférez."
+    question: "Quelle est ta stack principale ?",
+    answer: "Principalement React côté front, Node.js / Express côté back, PostgreSQL en base de données. Je travaille aussi avec Next.js, MongoDB, Docker et j'apprends vite de nouvelles technologies."
   },
   {
-    question: "Pourquoi pas une agence ou un dev à l'étranger moins cher ?",
-    answer: "Agence = vous payez leur structure (bureaux, commerciaux, marges)\nDev offshore = barrière langue, décalage horaire, qualité variable\nMoi = contact direct, réactif, français, transparent, et je suis là après livraison."
+    question: "Tu as un profil GitHub ou des projets à voir ?",
+    answer: "Oui, mon GitHub est accessible via le bouton en haut de page. Vous trouverez le code source de mes projets principaux, dont SkillSwap (plateforme full-stack) et IBA Performance (site avec CMS headless)."
   }
 ];

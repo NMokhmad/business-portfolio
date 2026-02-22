@@ -1,42 +1,50 @@
 export const processSteps = [
   {
     step: "1",
-    title: "Appel découverte (15-30min, gratuit)",
+    title: "Comprendre",
     details: [
-      "Vous m'expliquez votre besoin, je vous dis si je peux vous aider",
-      "Si ça match, je vous envoie un devis clair sous 24h"
+      "Je lis les tickets, je pose les bonnes questions avant de coder",
+      "Je clarifie les critères d'acceptation et les cas limites"
     ]
   },
   {
     step: "2",
-    title: "Validation et acompte (30%)",
+    title: "Concevoir",
     details: [
-      "Vous validez le devis, on fixe un planning réaliste",
-      "Je commence dès réception de l'acompte"
+      "Je découpe la feature en étapes logiques et j'identifie les risques",
+      "Je propose une approche claire avant de démarrer"
     ]
   },
   {
     step: "3",
-    title: "Développement + Points hebdomadaires",
+    title: "Coder",
     details: [
-      "Vous suivez l'avancement chaque semaine (démo en live)",
-      "Vous pouvez ajuster en cours de route, sans frais cachés"
+      "Branche dédiée, commits atomiques et clairs",
+      "Code lisible, commenté là où c'est nécessaire"
     ]
   },
   {
     step: "4",
-    title: "Livraison et formation",
+    title: "Tester",
     details: [
-      "Je vous forme à l'utilisation (vidéos + session 1-to-1)",
-      "Le site/app est 100% à vous, aucune dépendance technique"
+      "Tests unitaires et d'intégration sur les parties critiques",
+      "Je vérifie les cas d'erreur, pas seulement le happy path"
     ]
   },
   {
     step: "5",
-    title: "Support 30 jours inclus",
+    title: "Livrer",
     details: [
-      "Bugs, questions, ajustements : je suis là gratuitement",
-      "Puis option maintenance mensuelle si besoin"
+      "Pull request avec description claire, lien vers le ticket",
+      "Je suis disponible pour répondre aux questions en code review"
+    ]
+  },
+  {
+    step: "6",
+    title: "Itérer",
+    details: [
+      "Je prends en compte les retours et je les applique rapidement",
+      "Je tire des enseignements pour les prochains sprints"
     ]
   }
 ];

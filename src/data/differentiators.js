@@ -1,22 +1,22 @@
 export const differentiators = [
   {
-    iconName: "Clock",
-    title: "Livraison rapide, sans compromis qualité",
-    description: "Vos concurrents ne vous attendront pas. Je livre en 2-4 semaines, pas en 3 mois."
+    iconName: "Code2",
+    title: "Stack maîtrisée de bout en bout",
+    description: "React, Node.js, PostgreSQL — je prends en charge tout le cycle de vie d'une feature, du composant à l'API."
   },
   {
-    iconName: "DollarSign",
-    title: "Transparent sur les prix, pas de devis fleuve",
-    description: "Vous savez exactement ce que vous payez. Pas de frais cachés découverts à la fin."
+    iconName: "Users",
+    title: "Mindset équipe",
+    description: "Je documente, je fais des code reviews, je communique en standup ou en async. Je m'adapte à votre process."
   },
   {
-    iconName: "MessageSquare",
-    title: "Je parle \"business\", pas \"code\"",
-    description: "Vous n'avez pas besoin de comprendre React. Vous avez besoin que ça marche et que ça vende."
+    iconName: "Zap",
+    title: "Delivery fiable",
+    description: "J'estime correctement, je livre dans les temps, je préviens dès qu'un risque apparaît. Pas de surprises."
   },
   {
     iconName: "TrendingUp",
-    title: "Résultats mesurables",
-    description: "Chaque projet inclut un suivi de performance : visiteurs, conversions, vitesse. Vous voyez l'impact."
+    title: "Vision produit",
+    description: "Je comprends l'impact business de chaque tâche. Je ne code pas juste ce qui est demandé, je propose des améliorations."
   }
 ];

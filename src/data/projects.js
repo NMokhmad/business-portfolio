@@ -2,6 +2,8 @@ export const projects = [
   {
     title: "SkillSwap — Plateforme d'échange de compétences",
     image: "/skillswap.webp",
+    context: "Projet personnel",
+    stack: ["Node.js", "Express", "PostgreSQL", "React", "Socket.io"],
     problem: "Les développeurs et créatifs galèrent à trouver des partenaires complémentaires pour collaborer ou échanger des compétences, sans passer par des plateformes freelance coûteuses.",
     solution: "Une plateforme communautaire full-stack (Node.js, Express, PostgreSQL) avec profils, système de notation 5 étoiles, messagerie privée en temps réel, recherche par compétence et flux d'onboarding guidé.",
     result: "Site ultra-rapide (chargement en moins d'1 seconde), aucun décalage visuel à l'affichage, et une navigation fluide sans aucun temps de blocage.",
@@ -13,6 +15,8 @@ export const projects = [
   {
     title: "IBA Performance — Site vitrine & portfolio automobile",
     image: "/ibaperformance.webp",
+    context: "Client",
+    stack: ["React", "Sanity CMS", "Vite", "Vercel"],
     problem: "Un spécialiste de la reprogrammation moteur avec 15 ans d'expérience et 500+ véhicules préparés, mais aucune présence en ligne pour générer des leads qualifiés.",
     solution: "Création d'un site React avec CMS headless Sanity, portfolio filtrable (11 catégories), blog SEO, formulaire de contact, et optimisations performances (code splitting, lazy loading, analytics Vercel).",
     result: "Site rapide (chargement en 1 seconde), parfaitement référencé sur Google, et un client 100% autonome pour gérer son contenu sans faire appel à un développeur.",
