@@ -6,7 +6,7 @@ export const projects = [
     solution: "Une plateforme communautaire full-stack (Node.js, Express, PostgreSQL) avec profils, système de notation 5 étoiles, messagerie privée en temps réel, recherche par compétence et flux d'onboarding guidé.",
     result: "Site ultra-rapide (chargement en moins d'1 seconde), aucun décalage visuel à l'affichage, et une navigation fluide sans aucun temps de blocage.",
     techDecisions: [
-      { label: 'Argon2id', reason: 'Hashing mots de passe — résistant aux attaques GPU, standard recommandé en 2024' },
+      { label: 'Argon2id', reason: 'Hashing mots de passe — résistant aux attaques GPU, standard de référence OWASP' },
       { label: 'JWT + cookie httpOnly', reason: 'Token inaccessible au JavaScript — protection XSS native' },
       { label: 'PostgreSQL relationnel', reason: 'Intégrité garantie entre profils, compétences, notations et messages' },
       { label: 'DigitalOcean App Platform', reason: 'Déploiement containerisé, SSL automatique, rollback one-click' },
