@@ -2,7 +2,7 @@ export const differentiators = [
   {
     iconName: "Layers",
     title: "Full ownership du projet",
-    description: "Architecture, développement, déploiement, SSL, domaine — vous n'avez pas à coordonner 3 prestataires. Un interlocuteur unique, de l'idée à la mise en ligne."
+    description: "Architecture, développement, déploiement, SSL, domaine — je gère l'ensemble. Vous ne perdez pas de temps à coordonner un designer, un dev back et un hébergeur."
   },
   {
     iconName: "DollarSign",
@@ -10,9 +10,9 @@ export const differentiators = [
     description: "Vous savez exactement ce que vous payez. Pas de frais cachés découverts à la fin."
   },
   {
-    iconName: "MessageSquare",
-    title: "Je parle \"business\", pas \"code\"",
-    description: "Vous n'avez pas besoin de comprendre React. Vous avez besoin que ça marche et que ça vende."
+    iconName: "Code2",
+    title: "Code maintenable, pas jetable",
+    description: "Je livre du code qu'un autre développeur peut reprendre, faire évoluer ou auditer. Pas un prototype qui tient par miracle."
   },
   {
     iconName: "AlertCircle",
