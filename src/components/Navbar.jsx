@@ -1,6 +1,28 @@
 import { Moon, Sun, Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection, scrollToContact }) => {
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const sectionIds = ['differentiators', 'projects', 'process', 'faq'];
+    const handleScroll = () => {
+      const navHeight = 80;
+      const scrollY = window.scrollY;
+      let current = '';
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && scrollY >= el.offsetTop - navHeight - 60) {
+          current = id;
+        }
+      });
+      setActiveSection(current);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <nav className="navbar-bg" style={{ position: 'fixed', top: 0, width: '100%', zIndex: 50 }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
@@ -17,10 +39,20 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
           {/* Desktop nav */}
           <div style={{ display: 'none' }} className="md-nav-links">
             <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-              <button onClick={() => scrollToSection('differentiators')} className="nav-link">Pourquoi moi</button>
-              <button onClick={() => scrollToSection('projects')} className="nav-link">Résultats</button>
-              <button onClick={() => scrollToSection('process')} className="nav-link">Process</button>
-              <button onClick={() => scrollToSection('faq')} className="nav-link">FAQ</button>
+              {[
+                { label: 'Pourquoi moi', id: 'differentiators' },
+                { label: 'Résultats', id: 'projects' },
+                { label: 'Process', id: 'process' },
+                { label: 'FAQ', id: 'faq' },
+              ].map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`nav-link${activeSection === id ? ' nav-link-active' : ''}`}
+                >
+                  {label}
+                </button>
+              ))}
 
               <button onClick={scrollToContact} className="btn-gold" style={{ padding: '0.6rem 1.4rem' }}>
                 Démarrer un projet
@@ -92,7 +124,7 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
                   background: 'none',
                   border: 'none',
                   borderBottom: '1px solid var(--border)',
-                  color: 'var(--text-muted)',
+                  color: activeSection === item.id ? 'var(--gold)' : 'var(--text-muted)',
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: '0.85rem',
                   letterSpacing: '0.08em',

@@ -361,6 +361,8 @@ h3 {
 
 .nav-link:hover { color: var(--gold); }
 .nav-link:hover::after { width: 100%; }
+.nav-link-active { color: var(--gold); }
+.nav-link-active::after { width: 100%; }
 
 /* ================================================
    FORM INPUTS
