@@ -66,9 +66,8 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             lineHeight: 1.05,
           }}
         >
-          Votre site vous fait{' '}
-          <span style={{ color: 'var(--red)', fontStyle: 'italic' }}>perdre des clients</span>
-          {' '}?
+          Vous avez une idée.{' '}
+          <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Je la transforme en produit.</span>
         </h1>
 
         {/* Subheading */}
@@ -83,7 +82,7 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             lineHeight: 1.2,
           }}
         >
-          Je transforme les visiteurs en clients payants.
+          Sites vitrines, applications, MVP — de la première ligne de code à la mise en ligne.
         </p>
 
         {/* Description */}
@@ -97,9 +96,9 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             lineHeight: 1.7,
           }}
         >
-          Développeur web spécialisé en solutions qui génèrent des{' '}
+          Développeur fullstack spécialisé en solutions qui génèrent des{' '}
           <strong style={{ color: 'var(--text)', fontWeight: 600 }}>résultats business</strong>.{' '}
-          Pas de jargon. Pas de retards. Juste des sites qui travaillent pour vous 24/7.
+          Pas de retards. Un interlocuteur unique, de l'idée à la mise en ligne.
         </p>
 
         {/* CTAs */}
@@ -128,7 +127,7 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
           {[
             'Livraison en 2–4 semaines',
             'Support inclus 30 jours',
-            'Satisfait ou remboursé',
+            'Devis sous 24h',
           ].map((badge) => (
             <div
               key={badge}
