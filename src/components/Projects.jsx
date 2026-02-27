@@ -100,6 +100,36 @@ const ProjectCard = ({ project, index }) => (
           ))}
         </div>
 
+        {/* Tech decisions */}
+        {project.techDecisions && project.techDecisions.length > 0 && (
+          <div style={{
+            marginBottom: '1.75rem',
+            padding: '1rem 1.25rem',
+            background: 'var(--surface-2)',
+            borderLeft: '2px solid var(--border-hover)',
+          }}>
+            <p style={{
+              fontSize: '0.68rem',
+              color: 'var(--text-dim)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 700,
+              marginBottom: '0.6rem',
+            }}>
+              Décisions techniques
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+              {project.techDecisions.map(({ label, reason }) => (
+                <div key={label} style={{ fontSize: '0.82rem', lineHeight: 1.55 }}>
+                  <strong style={{ color: 'var(--text)', fontWeight: 600 }}>{label}</strong>
+                  <span style={{ color: 'var(--text-muted)' }}> — {reason}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Testimonial */}
         <blockquote style={{
           background: 'var(--surface-2)',
