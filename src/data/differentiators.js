@@ -1,8 +1,8 @@
 export const differentiators = [
   {
-    iconName: "Clock",
-    title: "Livraison rapide, sans compromis qualité",
-    description: "Vos concurrents ne vous attendront pas. Je livre en 2-4 semaines, pas en 3 mois."
+    iconName: "Layers",
+    title: "Full ownership du projet",
+    description: "Architecture, développement, déploiement, SSL, domaine — vous n'avez pas à coordonner 3 prestataires. Un interlocuteur unique, de l'idée à la mise en ligne."
   },
   {
     iconName: "DollarSign",
@@ -15,8 +15,8 @@ export const differentiators = [
     description: "Vous n'avez pas besoin de comprendre React. Vous avez besoin que ça marche et que ça vende."
   },
   {
-    iconName: "TrendingUp",
-    title: "Résultats mesurables",
-    description: "Chaque projet inclut un suivi de performance : visiteurs, conversions, vitesse. Vous voyez l'impact."
+    iconName: "AlertCircle",
+    title: "Transparence sur les blocages",
+    description: "Quand quelque chose prend plus de temps que prévu, vous êtes prévenu avant de le découvrir. Pas de mauvaises surprises à la livraison."
   }
 ];
