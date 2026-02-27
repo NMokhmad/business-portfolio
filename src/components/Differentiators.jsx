@@ -1,7 +1,7 @@
-import { Layers, DollarSign, MessageSquare, AlertCircle, ArrowRight } from 'lucide-react';
+import { Layers, DollarSign, Code2, AlertCircle, ArrowRight } from 'lucide-react';
 import { differentiators } from '../data/differentiators';
 
-const iconMap = { Layers, DollarSign, MessageSquare, AlertCircle };
+const iconMap = { Layers, DollarSign, Code2, AlertCircle };
 
 const Differentiators = ({ scrollToSection }) => {
   return (
