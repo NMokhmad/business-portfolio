@@ -1,7 +1,6 @@
 # Mokhmad — Portfolio Professionnel
 
-Code source de mon portfolio freelance.
-→ **[Voir le portfolio en ligne](#)** *(lien à compléter lors du déploiement)*
+Code source de mon portfolio freelance. Déploiement en cours — lien disponible prochainement.
 
 ---
 
