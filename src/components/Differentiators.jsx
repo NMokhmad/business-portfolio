@@ -1,7 +1,7 @@
-import { Clock, DollarSign, MessageSquare, TrendingUp, ArrowRight } from 'lucide-react';
+import { Layers, DollarSign, MessageSquare, AlertCircle, ArrowRight } from 'lucide-react';
 import { differentiators } from '../data/differentiators';
 
-const iconMap = { Clock, DollarSign, MessageSquare, TrendingUp };
+const iconMap = { Layers, DollarSign, MessageSquare, AlertCircle };
 
 const Differentiators = ({ scrollToSection }) => {
   return (
