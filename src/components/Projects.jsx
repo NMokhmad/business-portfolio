@@ -174,18 +174,29 @@ const ProjectCard = ({ project, index }) => (
 const Projects = () => {
   return (
     <section id="projects" style={{ padding: '6rem 2rem' }}>
-      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
+      <hr className="section-sep" />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <span className="section-label">Réalisations</span>
+        <div style={{ marginBottom: '4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+            <div style={{ width: 36, height: 1, background: 'var(--gold)', flexShrink: 0 }} />
+            <span style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+            }}>
+              Réalisations
+            </span>
+          </div>
           <h2
             className="font-display"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.05 }}
           >
             Projets &amp; résultats concrets
           </h2>
-          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginTop: '0.75rem' }}>
             Pas de bla-bla. Juste des chiffres.
           </p>
         </div>
