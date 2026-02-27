@@ -1,76 +1,87 @@
-import { Layers, DollarSign, Code2, AlertCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { differentiators } from '../data/differentiators';
-
-const iconMap = { Layers, DollarSign, Code2, AlertCircle };
 
 const Differentiators = ({ scrollToSection }) => {
   return (
     <section id="differentiators" style={{ padding: '6rem 2rem' }}>
-      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
+      <hr className="section-sep" />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <span className="section-label">Pourquoi moi</span>
+        {/* Header — left-aligned */}
+        <div className="animate-fade-up d1" style={{ marginBottom: '4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+            <div style={{ width: 36, height: 1, background: 'var(--gold)', flexShrink: 0 }} />
+            <span style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+            }}>
+              Pourquoi moi
+            </span>
+          </div>
           <h2
             className="font-display"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.05, maxWidth: '600px' }}
           >
             Ce qui me différencie
           </h2>
-          <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '480px', margin: '0 auto' }}>
-            Vous n'avez pas besoin d'un CV. Vous avez besoin de résultats.
-          </p>
         </div>
 
-        {/* Cards grid */}
-        <div className="diff-grid" style={{ gap: '1.5px', background: 'var(--border)' }}>
-          {differentiators.map((diff, index) => {
-            const Icon = iconMap[diff.iconName];
-            return (
-              <div
-                key={index}
-                className="card"
-                style={{ padding: '2.5rem', background: 'var(--surface)' }}
+        {/* Manifesto list */}
+        <div>
+          {differentiators.map((diff, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '2.5rem',
+                padding: '2.25rem 0',
+                borderTop: '1px solid var(--border)',
+                cursor: 'default',
+                transition: 'border-color 0.25s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderTopColor = 'var(--gold)';
+                e.currentTarget.querySelector('.diff-index').style.color = 'var(--gold)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderTopColor = 'var(--border)';
+                e.currentTarget.querySelector('.diff-index').style.color = 'var(--text-dim)';
+              }}
+            >
+              <span
+                className="diff-index font-display"
+                style={{
+                  fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
+                  fontWeight: 300,
+                  lineHeight: 1,
+                  color: 'var(--text-dim)',
+                  flexShrink: 0,
+                  width: 'clamp(3rem, 5.5vw, 4.5rem)',
+                  transition: 'color 0.25s',
+                }}
               >
-                {/* Number + Icon */}
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-                  <span
-                    className="font-display"
-                    style={{
-                      fontSize: '3.5rem',
-                      fontWeight: 300,
-                      color: 'var(--text-dim)',
-                      lineHeight: 1,
-                      opacity: 0.5,
-                    }}
-                  >
-                    0{index + 1}
-                  </span>
-                  <div style={{
-                    padding: '0.6rem',
-                    background: 'var(--gold-glow)',
-                    border: '1px solid var(--border-hover)',
-                    color: 'var(--gold)',
-                  }}>
-                    <Icon size={20} />
-                  </div>
-                </div>
-
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.75rem', lineHeight: 1.4 }}>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div style={{ flex: 1, paddingTop: '0.35rem' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.6rem', lineHeight: 1.4, color: 'var(--text)' }}>
                   {diff.title}
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.75, maxWidth: '640px' }}>
                   {diff.description}
                 </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
+          <div style={{ borderTop: '1px solid var(--border)' }} />
         </div>
 
         {/* CTA */}
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <div style={{ marginTop: '3rem' }}>
           <button
             onClick={() => scrollToSection('problems')}
             style={{
