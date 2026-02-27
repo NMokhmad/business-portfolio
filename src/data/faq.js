@@ -13,7 +13,7 @@ export const faqItems = [
   },
   {
     question: "Et si je ne suis pas satisfait ?",
-    answer: "2 options :\n1. On ajuste jusqu'à ce que ça vous convienne (inclus dans le projet)\n2. Garantie satisfait ou remboursé sous 7 jours après livraison\nJe ne garde pas votre argent si vous n'êtes pas content."
+    answer: "J'inclus les ajustements dans chaque projet. Si quelque chose ne vous convient pas à la livraison, on le corrige ensemble — sans frais supplémentaires. Vous ne payez pas pour un résultat qui ne vous satisfait pas."
   },
   {
     question: "Vous faites aussi la maintenance après ?",
