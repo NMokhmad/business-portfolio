@@ -130,9 +130,9 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
               }}
             >
               {[
-                { value: '2–4', unit: ' sem.', label: 'Délai de livraison' },
-                { value: '24h', unit: '', label: 'Devis garanti' },
-                { value: '30j', unit: '', label: 'Support inclus' },
+                { value: '8.5', unit: ' /10', label: 'Audit sécurité' },
+                { value: 'DWWM', unit: '', label: 'Certifié' },
+                { value: 'Immédiat', unit: '', label: 'Disponibilité' },
               ].map(({ value, unit, label }) => (
                 <div key={label}>
                   <div
