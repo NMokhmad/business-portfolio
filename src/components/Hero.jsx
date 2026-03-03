@@ -62,7 +62,7 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
                 textTransform: 'uppercase',
                 color: 'var(--text-muted)',
               }}>
-                Développeur Web Fullstack
+                Développeur Fullstack JS · Certifié DWWM · Disponible en CDI
               </span>
             </div>
 
@@ -76,12 +76,12 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
                 letterSpacing: '-0.02em',
               }}
             >
-              <span style={{ display: 'block', fontWeight: 300 }}>Vous avez</span>
+              <span style={{ display: 'block', fontWeight: 300 }}>Développeur</span>
               <span style={{ display: 'block', fontWeight: 700, fontStyle: 'italic', color: 'var(--gold)' }}>
-                une idée.
+                Fullstack JS.
               </span>
-              <span style={{ display: 'block', fontWeight: 300 }}>Je la transforme</span>
-              <span style={{ display: 'block', fontWeight: 400, fontStyle: 'italic' }}>en produit.</span>
+              <span style={{ display: 'block', fontWeight: 300 }}>Sécurité backend,</span>
+              <span style={{ display: 'block', fontWeight: 400, fontStyle: 'italic' }}>disponible en CDI.</span>
             </h1>
 
             {/* Services descriptor */}
@@ -110,9 +110,9 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
                 marginBottom: '2.5rem',
               }}
             >
-              Développeur fullstack spécialisé en solutions qui génèrent des{' '}
-              <strong style={{ color: 'var(--text)', fontWeight: 600 }}>résultats business</strong>.{' '}
-              Pas de retards. Un interlocuteur unique, de l'idée à la mise en ligne.
+              Certifié DWWM, spécialisé{' '}
+              <strong style={{ color: 'var(--text)', fontWeight: 600 }}>sécurité backend</strong>.{' '}
+              Je cherche une équipe où mes compétences React / Node.js / PostgreSQL ajoutent de la valeur dès le premier sprint.
             </p>
 
             {/* Editorial stats */}
