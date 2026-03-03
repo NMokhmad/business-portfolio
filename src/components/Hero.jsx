@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 
-const Hero = ({ scrollToContact, scrollToSection }) => {
+const Hero = ({ scrollToSection }) => {
   return (
     <section
       style={{
