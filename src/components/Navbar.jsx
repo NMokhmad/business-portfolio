@@ -55,7 +55,7 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
               ))}
 
               <button onClick={scrollToContact} className="btn-gold" style={{ padding: '0.6rem 1.4rem' }}>
-                Démarrer un projet
+                Me contacter
               </button>
 
               <button
@@ -140,7 +140,7 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
               className="btn-gold"
               style={{ marginTop: '1rem', justifyContent: 'center' }}
             >
-              Démarrer un projet
+              Me contacter
             </button>
           </div>
         </div>
