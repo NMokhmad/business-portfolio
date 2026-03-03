@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mokhmad.dev/sitemap.xml
+Sitemap: https://mokhmad.fr/sitemap.xml

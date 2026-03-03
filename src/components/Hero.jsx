@@ -1,154 +1,282 @@
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const Hero = ({ scrollToContact }) => {
+const Hero = ({ scrollToContact, scrollToSection }) => {
   return (
     <section
       style={{
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
         padding: '6rem 2rem 4rem',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
+      {/* Ghost background number */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          right: '-0.04em',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 'clamp(180px, 28vw, 420px)',
+          fontWeight: 700,
+          color: 'transparent',
+          WebkitTextStroke: '1px var(--border)',
+          lineHeight: 1,
+          userSelect: 'none',
+          pointerEvents: 'none',
+          letterSpacing: '-0.02em',
+          zIndex: 0,
+        }}
+      >
+        01
+      </div>
 
-        {/* Section label */}
-        <div className="animate-fade-up d1" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-label">Développeur Web Fullstack</span>
-        </div>
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          width: '100%',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        <div className="hero-inner">
 
-        {/* Photo */}
-        <div className="animate-fade-up d2" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
-          <div style={{ position: 'relative', display: 'inline-block' }}>
-            {/* Gold ring */}
+          {/* ── Left: Content ─────────────────────────────── */}
+          <div className="hero-content">
+
+            {/* Eyebrow */}
             <div
+              className="animate-fade-up d1"
+              style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}
+            >
+              <div style={{ width: 36, height: 1, background: 'var(--gold)', flexShrink: 0 }} />
+              <span style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: '0.65rem',
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'var(--text-muted)',
+              }}>
+                Développeur Web Fullstack
+              </span>
+            </div>
+
+            {/* H1 — mixed weight editorial */}
+            <h1
+              className="animate-fade-up d2 font-display"
               style={{
-                position: 'absolute',
-                inset: '-3px',
-                borderRadius: '50%',
-                background: `conic-gradient(var(--gold) 0deg, var(--gold-glow) 90deg, var(--gold) 180deg, var(--gold-glow) 270deg, var(--gold) 360deg)`,
-                animation: 'spin 8s linear infinite',
+                fontSize: 'clamp(3rem, 7.5vw, 6.5rem)',
+                lineHeight: 0.93,
+                marginBottom: '2.5rem',
+                letterSpacing: '-0.02em',
               }}
-              aria-hidden="true"
-            />
+            >
+              <span style={{ display: 'block', fontWeight: 300 }}>Vous avez</span>
+              <span style={{ display: 'block', fontWeight: 700, fontStyle: 'italic', color: 'var(--gold)' }}>
+                une idée.
+              </span>
+              <span style={{ display: 'block', fontWeight: 300 }}>Je la transforme</span>
+              <span style={{ display: 'block', fontWeight: 400, fontStyle: 'italic' }}>en produit.</span>
+            </h1>
+
+            {/* Services descriptor */}
+            <p
+              className="animate-fade-up d3"
+              style={{
+                fontSize: '0.75rem',
+                fontFamily: "'Outfit', sans-serif",
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: 'var(--text-dim)',
+                marginBottom: '1.25rem',
+              }}
+            >
+              Sites vitrines · Applications · MVP
+            </p>
+
+            {/* Description */}
+            <p
+              className="animate-fade-up d4"
+              style={{
+                fontSize: '1rem',
+                color: 'var(--text-muted)',
+                maxWidth: '480px',
+                lineHeight: 1.75,
+                marginBottom: '2.5rem',
+              }}
+            >
+              Développeur fullstack spécialisé en solutions qui génèrent des{' '}
+              <strong style={{ color: 'var(--text)', fontWeight: 600 }}>résultats business</strong>.{' '}
+              Pas de retards. Un interlocuteur unique, de l'idée à la mise en ligne.
+            </p>
+
+            {/* Editorial stats */}
             <div
+              className="animate-fade-up d5"
               style={{
-                position: 'absolute',
-                inset: '0px',
-                borderRadius: '50%',
-                background: 'var(--bg)',
+                display: 'flex',
+                gap: '2.5rem',
+                flexWrap: 'wrap',
+                paddingTop: '1.75rem',
+                paddingBottom: '1.75rem',
+                borderTop: '1px solid var(--border)',
+                borderBottom: '1px solid var(--border)',
+                marginBottom: '2.5rem',
               }}
-              aria-hidden="true"
-            />
+            >
+              {[
+                { value: '2–4', unit: ' sem.', label: 'Délai de livraison' },
+                { value: '24h', unit: '', label: 'Devis garanti' },
+                { value: '30j', unit: '', label: 'Support inclus' },
+              ].map(({ value, unit, label }) => (
+                <div key={label}>
+                  <div
+                    className="font-display"
+                    style={{
+                      fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      color: 'var(--text)',
+                    }}
+                  >
+                    {value}
+                    {unit && (
+                      <span style={{
+                        fontSize: '0.55em',
+                        fontWeight: 400,
+                        color: 'var(--gold)',
+                        marginLeft: '0.1em',
+                      }}>
+                        {unit}
+                      </span>
+                    )}
+                  </div>
+                  <div style={{
+                    fontSize: '0.62rem',
+                    color: 'var(--text-dim)',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    fontFamily: "'Outfit', sans-serif",
+                    marginTop: '0.35rem',
+                  }}>
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div
+              className="animate-fade-up d6"
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}
+            >
+              <button onClick={scrollToContact} className="btn-gold" style={{ fontSize: '0.82rem' }}>
+                Discuter de votre projet <ArrowRight size={16} />
+              </button>
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="btn-outline"
+                style={{ fontSize: '0.82rem' }}
+              >
+                Voir mes réalisations
+              </button>
+            </div>
+          </div>
+
+          {/* ── Right: Portrait ───────────────────────────── */}
+          <div className="animate-fade-up d3 hero-portrait-wrap">
+
+            {/* Corner bracket accents */}
+            <div aria-hidden="true" style={{ position: 'absolute', top: -10, left: -10, width: 22, height: 22, borderTop: '2px solid var(--gold)', borderLeft: '2px solid var(--gold)' }} />
+            <div aria-hidden="true" style={{ position: 'absolute', top: -10, right: -10, width: 22, height: 22, borderTop: '2px solid var(--border)', borderRight: '2px solid var(--border)' }} />
+            <div aria-hidden="true" style={{ position: 'absolute', bottom: -10, left: -10, width: 22, height: 22, borderBottom: '2px solid var(--border)', borderLeft: '2px solid var(--border)' }} />
+            <div aria-hidden="true" style={{ position: 'absolute', bottom: -10, right: -10, width: 22, height: 22, borderBottom: '2px solid var(--gold)', borderRight: '2px solid var(--gold)' }} />
+
             <img
               src="/pp.webp"
               alt="Mokhmad — Développeur Web Fullstack"
               style={{
-                position: 'relative',
-                width: '140px',
-                height: '140px',
-                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
                 objectFit: 'cover',
-                border: '3px solid var(--bg)',
+                display: 'block',
               }}
             />
-          </div>
-        </div>
 
-        {/* Headline */}
-        <h1
-          className="animate-fade-up d3 font-display"
-          style={{
-            fontSize: 'clamp(2.8rem, 7vw, 5.5rem)',
-            fontWeight: 700,
-            marginBottom: '1.25rem',
-            lineHeight: 1.05,
-          }}
-        >
-          Développeur Fullstack
-        </h1>
-
-        {/* Subheading */}
-        <p
-          className="animate-fade-up d4 font-display"
-          style={{
-            fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)',
-            fontWeight: 400,
-            color: 'var(--text-muted)',
-            marginBottom: '1.25rem',
-            lineHeight: 1.2,
-          }}
-        >
-          Je conçois et livre des applications web robustes, du front React au back Node.js.
-        </p>
-
-        {/* Description */}
-        <p
-          className="animate-fade-up d5"
-          style={{
-            fontSize: '1.05rem',
-            color: 'var(--text-muted)',
-            maxWidth: '640px',
-            margin: '0 auto 3rem',
-            lineHeight: 1.7,
-          }}
-        >
-          Disponible pour un{' '}
-          <strong style={{ color: 'var(--text)', fontWeight: 600 }}>CDI</strong>{' '}
-          — j'apporte une vision technique claire et un sens des priorités business.
-        </p>
-
-        {/* CTAs */}
-        <div
-          className="animate-fade-up d6"
-          style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '3.5rem' }}
-        >
-          <a href="/cv.pdf" download className="btn-gold" style={{ fontSize: '0.82rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            Télécharger mon CV <ArrowRight size={16} />
-          </a>
-          <button onClick={scrollToContact} className="btn-outline" style={{ fontSize: '0.82rem' }}>
-            Me contacter
-          </button>
-        </div>
-
-        {/* Trust badges */}
-        <div
-          className="animate-fade-up d7"
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1.5rem',
-          }}
-        >
-          {[
-            'React · Node.js · PostgreSQL',
-            'GitHub actif',
-            'Disponible pour CDI',
-          ].map((badge) => (
-            <div
-              key={badge}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontSize: '0.82rem',
+            {/* Availability badge */}
+            <div style={{
+              position: 'absolute',
+              bottom: -1,
+              left: '50%',
+              transform: 'translateX(-50%) translateY(50%)',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              padding: '0.4rem 1rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              whiteSpace: 'nowrap',
+            }}>
+              <div className="hero-availability-dot" />
+              <span style={{
+                fontSize: '0.62rem',
+                fontFamily: "'Outfit', sans-serif",
                 color: 'var(--text-muted)',
-              }}
-            >
-              <CheckCircle size={15} style={{ color: 'var(--green)', flexShrink: 0 }} />
-              {badge}
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+              }}>
+                Disponible
+              </span>
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
 
-      {/* Spinning ring animation */}
       <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        .hero-inner {
+          display: grid;
+          grid-template-columns: 1fr clamp(200px, 26vw, 360px);
+          gap: clamp(2rem, 6vw, 5rem);
+          align-items: center;
+        }
+
+        .hero-portrait-wrap {
+          position: relative;
+          width: clamp(200px, 26vw, 360px);
+          height: clamp(260px, 34vw, 460px);
+          flex-shrink: 0;
+        }
+
+        .hero-availability-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--green);
+          flex-shrink: 0;
+          animation: hero-dot-pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes hero-dot-pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        @media (max-width: 720px) {
+          .hero-inner {
+            grid-template-columns: 1fr;
+          }
+          .hero-portrait-wrap {
+            width: clamp(160px, 55vw, 260px);
+            height: clamp(200px, 70vw, 320px);
+            margin: 0 auto;
+            order: -1;
+          }
         }
       `}</style>
     </section>

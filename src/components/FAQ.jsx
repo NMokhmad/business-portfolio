@@ -2,7 +2,7 @@ import { Plus, Minus, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { faqItems } from '../data/faq';
 
-const FAQItem = ({ item }) => {
+const FAQItem = ({ item, index }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -18,22 +18,38 @@ const FAQItem = ({ item }) => {
         style={{
           width: '100%',
           textAlign: 'left',
-          padding: '1.5rem 2rem',
+          padding: '1.5rem 1.5rem 1.5rem 0',
           background: 'none',
           border: 'none',
           color: 'var(--text)',
           cursor: 'pointer',
           display: 'flex',
-          justifyContent: 'space-between',
           alignItems: 'center',
-          gap: '1rem',
+          gap: '1.25rem',
           fontFamily: "'Outfit', sans-serif",
         }}
         aria-expanded={open}
       >
-        <span style={{ fontWeight: 600, fontSize: '0.98rem', lineHeight: 1.4, flex: 1 }}>
+        {/* Index number */}
+        <span
+          className="font-display"
+          style={{
+            fontSize: '1.4rem',
+            fontWeight: 300,
+            lineHeight: 1,
+            color: open ? 'var(--gold)' : 'var(--text-dim)',
+            flexShrink: 0,
+            width: '2.5rem',
+            transition: 'color 0.25s',
+          }}
+        >
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <span style={{ fontWeight: 600, fontSize: '1rem', lineHeight: 1.4, flex: 1 }}>
           {item.question}
         </span>
+
         <div
           style={{
             flexShrink: 0,
@@ -61,7 +77,7 @@ const FAQItem = ({ item }) => {
       >
         <div
           style={{
-            padding: '0 2rem 1.5rem',
+            padding: '0 1.5rem 1.5rem calc(2.5rem + 1.25rem)',
             fontSize: '0.9rem',
             color: 'var(--text-muted)',
             lineHeight: 1.75,
@@ -78,28 +94,40 @@ const FAQItem = ({ item }) => {
 const FAQ = ({ scrollToContact }) => {
   return (
     <section id="faq" style={{ padding: '6rem 2rem' }}>
-      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
+      <hr className="section-sep" />
 
       <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <span className="section-label">FAQ</span>
-          <h2
-            className="font-display"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 700, marginBottom: '1rem' }}
-          >
+
+        {/* Header */}
+        <div className="animate-fade-up d1" style={{ marginBottom: '4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+            <div style={{ width: 36, height: 1, background: 'var(--gold)', flexShrink: 0 }} />
+            <span style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+            }}>
+              FAQ
+            </span>
+          </div>
+          <h2 className="font-display" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 700, lineHeight: 1.05 }}>
             Questions fréquentes
           </h2>
-          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginTop: '0.75rem' }}>
             Et réponses honnêtes.
           </p>
         </div>
 
-        <div style={{ border: '1px solid var(--border)', background: 'var(--surface)' }}>
+        {/* Accordion — no outer border */}
+        <div style={{ borderTop: '1px solid var(--border)' }}>
           {faqItems.map((item, index) => (
-            <FAQItem key={index} item={item} />
+            <FAQItem key={index} item={item} index={index} />
           ))}
         </div>
 
+        {/* CTA */}
         <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1.75rem' }}>
             Une autre question ?

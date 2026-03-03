@@ -74,33 +74,9 @@ const ProjectCard = ({ project, index }) => (
 
       {/* Content panel */}
       <div style={{ flex: 1, padding: '2.5rem', display: 'flex', flexDirection: 'column' }}>
-        <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem', lineHeight: 1.35 }}>
+        <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '1.75rem', lineHeight: 1.35 }}>
           {project.title}
         </h3>
-        {project.context && (
-          <p style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: "'Outfit', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-            {project.context}
-          </p>
-        )}
-        {project.stack && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
-            {project.stack.map((tech) => (
-              <span
-                key={tech}
-                style={{
-                  padding: '0.25rem 0.6rem',
-                  border: '1px solid var(--border)',
-                  fontSize: '0.72rem',
-                  color: 'var(--gold)',
-                  background: 'var(--gold-glow)',
-                  fontFamily: "'Outfit', sans-serif",
-                }}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        )}
 
         {/* PSR */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem', flex: 1 }}>
@@ -123,6 +99,36 @@ const ProjectCard = ({ project, index }) => (
             </div>
           ))}
         </div>
+
+        {/* Tech decisions */}
+        {project.techDecisions && project.techDecisions.length > 0 && (
+          <div style={{
+            marginBottom: '1.75rem',
+            padding: '1rem 1.25rem',
+            background: 'var(--surface-2)',
+            borderLeft: '2px solid var(--border-hover)',
+          }}>
+            <p style={{
+              fontSize: '0.68rem',
+              color: 'var(--text-dim)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 700,
+              marginBottom: '0.6rem',
+            }}>
+              Décisions techniques
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+              {project.techDecisions.map(({ label, reason }) => (
+                <div key={label} style={{ fontSize: '0.82rem', lineHeight: 1.55 }}>
+                  <strong style={{ color: 'var(--text)', fontWeight: 600 }}>{label}</strong>
+                  <span style={{ color: 'var(--text-muted)' }}> — {reason}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Testimonial */}
         <blockquote style={{
@@ -168,19 +174,30 @@ const ProjectCard = ({ project, index }) => (
 const Projects = () => {
   return (
     <section id="projects" style={{ padding: '6rem 2rem' }}>
-      <hr className="section-sep" style={{ marginBottom: '6rem' }} />
+      <hr className="section-sep" />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <span className="section-label">Réalisations</span>
+        <div style={{ marginBottom: '4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+            <div style={{ width: 36, height: 1, background: 'var(--gold)', flexShrink: 0 }} />
+            <span style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+            }}>
+              Réalisations
+            </span>
+          </div>
           <h2
             className="font-display"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '1rem' }}
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 700, lineHeight: 1.05 }}
           >
             Projets &amp; résultats concrets
           </h2>
-          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
-            Des projets concrets, du code livré, des résultats mesurables.
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginTop: '0.75rem' }}>
+            Pas de bla-bla. Juste des chiffres.
           </p>
         </div>
 

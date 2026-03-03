@@ -1,6 +1,28 @@
-import { Moon, Sun, Menu, X, Github } from 'lucide-react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scrollToSection, scrollToContact }) => {
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const sectionIds = ['differentiators', 'projects', 'process', 'faq'];
+    const handleScroll = () => {
+      const navHeight = 80;
+      const scrollY = window.scrollY;
+      let current = '';
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && scrollY >= el.offsetTop - navHeight - 60) {
+          current = id;
+        }
+      });
+      setActiveSection(current);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <nav className="navbar-bg" style={{ position: 'fixed', top: 0, width: '100%', zIndex: 50 }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
@@ -17,24 +39,23 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
           {/* Desktop nav */}
           <div style={{ display: 'none' }} className="md-nav-links">
             <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-              <button onClick={() => scrollToSection('differentiators')} className="nav-link">Atouts</button>
-              <button onClick={() => scrollToSection('projects')} className="nav-link">Projets</button>
-              <button onClick={() => scrollToSection('process')} className="nav-link">Méthode</button>
-              <button onClick={() => scrollToSection('faq')} className="nav-link">FAQ</button>
-
-              <a
-                href="https://github.com/NMokhmad"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
-                aria-label="GitHub"
-              >
-                <Github size={15} /> GitHub
-              </a>
+              {[
+                { label: 'Pourquoi moi', id: 'differentiators' },
+                { label: 'Résultats', id: 'projects' },
+                { label: 'Process', id: 'process' },
+                { label: 'FAQ', id: 'faq' },
+              ].map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`nav-link${activeSection === id ? ' nav-link-active' : ''}`}
+                >
+                  {label}
+                </button>
+              ))}
 
               <button onClick={scrollToContact} className="btn-gold" style={{ padding: '0.6rem 1.4rem' }}>
-                Me contacter
+                Démarrer un projet
               </button>
 
               <button
@@ -89,9 +110,9 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
         <div style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1.25rem 2rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
             {[
-              { label: 'Atouts', id: 'differentiators' },
-              { label: 'Projets', id: 'projects' },
-              { label: 'Méthode', id: 'process' },
+              { label: 'Pourquoi moi', id: 'differentiators' },
+              { label: 'Résultats', id: 'projects' },
+              { label: 'Process', id: 'process' },
               { label: 'FAQ', id: 'faq' },
             ].map((item) => (
               <button
@@ -103,7 +124,7 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
                   background: 'none',
                   border: 'none',
                   borderBottom: '1px solid var(--border)',
-                  color: 'var(--text-muted)',
+                  color: activeSection === item.id ? 'var(--gold)' : 'var(--text-muted)',
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: '0.85rem',
                   letterSpacing: '0.08em',
@@ -119,7 +140,7 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
               className="btn-gold"
               style={{ marginTop: '1rem', justifyContent: 'center' }}
             >
-              Me contacter
+              Démarrer un projet
             </button>
           </div>
         </div>
