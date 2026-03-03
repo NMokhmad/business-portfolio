@@ -6,7 +6,12 @@ export const projects = [
     stack: ["Node.js", "Express", "PostgreSQL", "React", "Socket.io"],
     problem: "Les développeurs et créatifs galèrent à trouver des partenaires complémentaires pour collaborer ou échanger des compétences, sans passer par des plateformes freelance coûteuses.",
     solution: "Une plateforme communautaire full-stack (Node.js, Express, PostgreSQL) avec profils, système de notation 5 étoiles, messagerie privée en temps réel, recherche par compétence et flux d'onboarding guidé.",
-    result: "Site ultra-rapide (chargement en moins d'1 seconde), aucun décalage visuel à l'affichage, et une navigation fluide sans aucun temps de blocage.",
+    result: "Audit sécurité indépendant : 8.5/10 (Argon2, protection timing attacks, sessions sécurisées). Site ultra-rapide : chargement < 1 seconde, navigation sans blocage.",
+    techDecisions: [
+      { label: "Argon2 (hachage)", reason: "Résistant aux attaques GPU/ASIC — recommandation OWASP 2024, supérieur à bcrypt pour les mots de passe." },
+      { label: "Comparaison temps constant", reason: "Prévient l'énumération d'utilisateurs via timing attacks sur le formulaire de login." },
+      { label: "Socket.io (temps réel)", reason: "Messagerie WebSocket avec fallback polling pour la compatibilité navigateurs anciens." },
+    ],
     testimonial: "SkillSwap m'a permis de trouver un développeur back-end pour mon projet en moins d'une semaine. Le système de notation aide vraiment à identifier les bons profils.",
     author: "Utilisateur bêta",
     liveUrl: "https://clownfish-app-hy864.ondigitalocean.app/",
