@@ -44,7 +44,7 @@ const Problems = ({ scrollToContact }) => {
               }}
             >
               {/* Problem — italic serif */}
-              <div style={{ padding: '1.75rem 2rem 1.75rem 0' }}>
+              <div style={{ padding: '1.75rem 2rem 1.75rem 2rem' }}>
                 <p
                   className="font-display"
                   style={{ fontSize: '1.05rem', fontStyle: 'italic', color: 'var(--text)', lineHeight: 1.65 }}
