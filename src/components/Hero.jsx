@@ -175,9 +175,14 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
               className="animate-fade-up d6"
               style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}
             >
-              <button onClick={scrollToContact} className="btn-gold" style={{ fontSize: '0.82rem' }}>
-                Discuter de votre projet <ArrowRight size={16} />
-              </button>
+              <a
+                href="/cv.pdf"
+                download
+                className="btn-gold"
+                style={{ fontSize: '0.82rem', textDecoration: 'none' }}
+              >
+                Télécharger mon CV <ArrowRight size={16} />
+              </a>
               <button
                 onClick={() => scrollToSection('projects')}
                 className="btn-outline"
@@ -230,7 +235,7 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
               }}>
-                Disponible
+                Disponible en CDI
               </span>
             </div>
           </div>
