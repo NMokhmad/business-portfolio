@@ -19,7 +19,7 @@ const Problems = ({ scrollToContact }) => {
               textTransform: 'uppercase',
               color: 'var(--text-muted)',
             }}>
-              Vos situations
+              Vos attentes
             </span>
           </div>
           <h2
@@ -71,11 +71,11 @@ const Problems = ({ scrollToContact }) => {
         {/* CTA */}
         <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1.75rem', lineHeight: 1.7 }}>
-            Si vous vous reconnaissez dans l'un de ces scénarios,{' '}
-            <strong style={{ color: 'var(--text)', fontWeight: 600 }}>parlons-en 15 minutes. Sans engagement.</strong>
+            Si l'un de ces points vous parle,{' '}
+            <strong style={{ color: 'var(--text)', fontWeight: 600 }}>échangeons 20 minutes. Sans engagement.</strong>
           </p>
           <button onClick={scrollToContact} className="btn-gold">
-            Réserver un appel découverte gratuit <ArrowRight size={16} />
+            Prendre contact <ArrowRight size={16} />
           </button>
         </div>
 
