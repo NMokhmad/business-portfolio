@@ -15,8 +15,8 @@ export const differentiators = [
     description: "J'estime correctement, je livre dans les temps, je préviens dès qu'un risque apparaît. Pas de surprises."
   },
   {
-    iconName: "TrendingUp",
-    title: "Vision produit",
-    description: "Je comprends l'impact business de chaque tâche. Je ne code pas juste ce qui est demandé, je propose des améliorations."
+    iconName: "Shield",
+    title: "Sécurité backend intégrée",
+    description: "Argon2, protection contre les timing attacks, sessions sécurisées. SkillSwap a obtenu un audit indépendant à 8.5/10 — un niveau rare pour un profil junior."
   }
 ];
