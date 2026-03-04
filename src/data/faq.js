@@ -1,7 +1,7 @@
 export const faqItems = [
   {
     question: "Combien ça coûte ?",
-    answer: "Ça dépend de la complexité, mais pour vous donner une idée :\n• Site vitrine : 1 500 - 3 000€\n• Application web simple : 3 000 - 7 000€\n• Plateforme complexe : 7 000€+\nJe vous fais un devis précis après notre appel découverte (gratuit)."
+    answer: "Ça dépend de la complexité, mais pour vous donner une idée :\n\n• Site vitrine : 1 500 – 3 000€\n  ex : site pour un artisan, un consultant, un professionnel libéral\n\n• Application web : 3 000 – 7 000€\n  ex : espace client, outil de réservation, tableau de bord, MVP SaaS\n\n• Plateforme complexe : 7 000€+\n  ex : marketplace, SaaS multi-utilisateurs, application métier sur mesure\n\nJe vous fais un devis précis après notre appel découverte (gratuit, 15 min)."
   },
   {
     question: "Combien de temps ça prend ?",
