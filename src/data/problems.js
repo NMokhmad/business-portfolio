@@ -7,7 +7,7 @@ export const problems = [
   {
     emoji: "🔒",
     problem: "Vous ne voulez pas gérer des vulnérabilités introduites par un junior",
-    solution: "Argon2, protection timing attacks, sessions sécurisées. Audit SkillSwap : 8.5/10. La sécurité est un réflexe, pas une case à cocher."
+    solution: "Argon2, protection timing attacks, sessions sécurisées — pratiques OWASP 2024. La sécurité est un réflexe, pas une case à cocher."
   },
   {
     emoji: "⚡",

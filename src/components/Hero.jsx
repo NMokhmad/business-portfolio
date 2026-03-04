@@ -130,7 +130,7 @@ const Hero = ({ scrollToSection }) => {
               }}
             >
               {[
-                { value: '8.5', unit: ' /10', label: 'Audit sécurité' },
+                { value: 'OWASP', unit: '', label: 'Sécurité backend' },
                 { value: 'DWWM', unit: '', label: 'Certifié' },
                 { value: 'Immédiat', unit: '', label: 'Disponibilité' },
               ].map(({ value, unit, label }) => (

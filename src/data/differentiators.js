@@ -17,6 +17,6 @@ export const differentiators = [
   {
     iconName: "Shield",
     title: "Sécurité backend intégrée",
-    description: "Argon2, protection contre les timing attacks, sessions sécurisées. SkillSwap a obtenu un audit indépendant à 8.5/10 — un niveau rare pour un profil junior."
+    description: "Argon2, protection contre les timing attacks, sessions sécurisées. Choix alignés sur les recommandations OWASP 2024 — documentés et défendables en entretien."
   }
 ];

@@ -6,7 +6,7 @@ export const projects = [
     stack: ["Node.js", "Express", "PostgreSQL", "React", "Socket.io"],
     problem: "Les développeurs et créatifs galèrent à trouver des partenaires complémentaires pour collaborer ou échanger des compétences, sans passer par des plateformes freelance coûteuses.",
     solution: "Une plateforme communautaire full-stack (Node.js, Express, PostgreSQL) avec profils, système de notation 5 étoiles, messagerie privée en temps réel, recherche par compétence et flux d'onboarding guidé.",
-    result: "Audit sécurité indépendant : 8.5/10 (Argon2, protection timing attacks, sessions sécurisées). Site ultra-rapide : chargement < 1 seconde, navigation sans blocage.",
+    result: "Sécurité backend : Argon2, protection timing attacks, sessions sécurisées (pratiques OWASP 2024). Site ultra-rapide : chargement < 1 seconde, navigation sans blocage.",
     techDecisions: [
       { label: "Argon2 (hachage)", reason: "Résistant aux attaques GPU/ASIC — recommandation OWASP 2024, supérieur à bcrypt pour les mots de passe." },
       { label: "Comparaison temps constant", reason: "Prévient l'énumération d'utilisateurs via timing attacks sur le formulaire de login." },
