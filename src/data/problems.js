@@ -6,8 +6,8 @@ export const problems = [
   },
   {
     emoji: "🔒",
-    problem: "Vous ne voulez pas gérer des vulnérabilités introduites par un junior",
-    solution: "Argon2, protection timing attacks, sessions sécurisées — pratiques OWASP 2024. La sécurité est un réflexe, pas une case à cocher."
+    problem: "Vous voulez un junior qui fait attention à ce qu'il produit",
+    solution: "Je justifie mes choix techniques (ex: Argon2 plutôt que MD5, sessions sécurisées). Pas de raccourcis qui créent des problèmes plus tard."
   },
   {
     emoji: "⚡",

@@ -80,7 +80,7 @@ const Hero = ({ scrollToSection }) => {
               <span style={{ display: 'block', fontWeight: 700, fontStyle: 'italic', color: 'var(--gold)' }}>
                 Fullstack JS.
               </span>
-              <span style={{ display: 'block', fontWeight: 300 }}>Sécurité backend,</span>
+              <span style={{ display: 'block', fontWeight: 300 }}>React + Node.js,</span>
               <span style={{ display: 'block', fontWeight: 400, fontStyle: 'italic' }}>disponible en CDI.</span>
             </h1>
 
@@ -110,8 +110,8 @@ const Hero = ({ scrollToSection }) => {
                 marginBottom: '2.5rem',
               }}
             >
-              Certifié DWWM, spécialisé{' '}
-              <strong style={{ color: 'var(--text)', fontWeight: 600 }}>sécurité backend</strong>.{' '}
+              Certifié DWWM, développeur{' '}
+              <strong style={{ color: 'var(--text)', fontWeight: 600 }}>fullstack de bout en bout</strong>.{' '}
               Je cherche une équipe où mes compétences React / Node.js / PostgreSQL ajoutent de la valeur dès le premier sprint.
             </p>
 
@@ -130,7 +130,7 @@ const Hero = ({ scrollToSection }) => {
               }}
             >
               {[
-                { value: 'OWASP', unit: '', label: 'Sécurité backend' },
+                { value: '2', unit: '', label: 'Projets fullstack' },
                 { value: 'DWWM', unit: '', label: 'Certifié' },
                 { value: 'Immédiat', unit: '', label: 'Disponibilité' },
               ].map(({ value, unit, label }) => (
