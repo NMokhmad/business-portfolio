@@ -200,6 +200,9 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             <img
               src="/pp.webp"
               alt="Mokhmad — Développeur Web Fullstack"
+              fetchpriority="high"
+              width="400"
+              height="500"
               style={{
                 width: '100%',
                 height: '100%',
@@ -275,7 +278,6 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
             width: clamp(160px, 55vw, 260px);
             height: clamp(200px, 70vw, 320px);
             margin: 0 auto;
-            order: -1;
           }
         }
       `}</style>

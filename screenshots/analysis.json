@@ -1,0 +1,224 @@
+{
+  "desktop": {
+    "title": "Mokhmad — Développeur Web Fullstack | Sites qui convertissent",
+    "metaDescription": "Développeur web fullstack spécialisé en sites et applications qui génèrent des résultats business. Livraison en 2-4 semaines, support inclus, garantie satisfait ou remboursé.",
+    "canonical": null,
+    "h1": [
+      {
+        "text": "Vous avez\nune idée.\nJe la transforme\nen produit.",
+        "aboveFold": true
+      }
+    ],
+    "h2": [
+      {
+        "text": "Ce qui me différencie",
+        "aboveFold": false
+      },
+      {
+        "text": "Vous vous reconnaissez ?",
+        "aboveFold": false
+      },
+      {
+        "text": "Projets & résultats concrets",
+        "aboveFold": false
+      },
+      {
+        "text": "Comment on travaille ensemble",
+        "aboveFold": false
+      },
+      {
+        "text": "Ce que mes clients disent",
+        "aboveFold": false
+      },
+      {
+        "text": "Questions fréquentes",
+        "aboveFold": false
+      }
+    ],
+    "ctas": [
+      {
+        "tag": "BUTTON",
+        "text": "DÉMARRER UN PROJET",
+        "aboveFold": true,
+        "href": null
+      },
+      {
+        "tag": "BUTTON",
+        "text": "DISCUTER DE VOTRE PROJET",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "BUTTON",
+        "text": "VOIR MES RÉALISATIONS",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "A",
+        "text": "VOIR LE SITE",
+        "aboveFold": false,
+        "href": "https://www.skillswaps.social/"
+      },
+      {
+        "tag": "A",
+        "text": "VOIR LE SITE",
+        "aboveFold": false,
+        "href": "https://www.ibaperformance.com"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "CE PROCESS VOUS CONVIENT ? DÉMARRONS VOTRE PROJET",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "A",
+        "text": "VOIR TOUS LES TÉMOIGNAGES SUR LINKEDIN",
+        "aboveFold": false,
+        "href": "https://www.linkedin.com/in/mokhmad-noutsoulkhanov-b74a56258/"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "03\nJe n'ai pas de budget énorme, vous travaillez quand même avec moi ?",
+        "aboveFold": false,
+        "href": null
+      }
+    ],
+    "navVisible": true,
+    "hamburger": {
+      "selector": "[aria-label*='Menu']",
+      "text": "",
+      "aboveFold": false
+    },
+    "overlays": [],
+    "images": [
+      {
+        "src": "/pp.webp",
+        "alt": "Mokhmad — Développeur Web Fullstack",
+        "hasAlt": true
+      }
+    ],
+    "hasHorizontalScroll": false,
+    "bodyScrollWidth": 1280,
+    "viewportWidth": 1280,
+    "viewportHeight": 800,
+    "openGraph": {
+      "title": "Mokhmad — Développeur Web Fullstack",
+      "description": "Je transforme les visiteurs en clients payants. Sites web et applications sur-mesure, livrés en 2-4 semaines.",
+      "image": "/pp.png",
+      "url": null
+    }
+  },
+  "mobile": {
+    "title": "Mokhmad — Développeur Web Fullstack | Sites qui convertissent",
+    "metaDescription": "Développeur web fullstack spécialisé en sites et applications qui génèrent des résultats business. Livraison en 2-4 semaines, support inclus, garantie satisfait ou remboursé.",
+    "canonical": null,
+    "h1": [
+      {
+        "text": "Vous avez\nune idée.\nJe la transforme\nen produit.",
+        "aboveFold": true
+      }
+    ],
+    "h2": [
+      {
+        "text": "Ce qui me différencie",
+        "aboveFold": false
+      },
+      {
+        "text": "Vous vous reconnaissez ?",
+        "aboveFold": false
+      },
+      {
+        "text": "Projets & résultats concrets",
+        "aboveFold": false
+      },
+      {
+        "text": "Comment on travaille ensemble",
+        "aboveFold": false
+      },
+      {
+        "text": "Ce que mes clients disent",
+        "aboveFold": false
+      },
+      {
+        "text": "Questions fréquentes",
+        "aboveFold": false
+      }
+    ],
+    "ctas": [
+      {
+        "tag": "BUTTON",
+        "text": "Démarrer un projet",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "BUTTON",
+        "text": "DISCUTER DE VOTRE PROJET",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "BUTTON",
+        "text": "VOIR MES RÉALISATIONS",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "A",
+        "text": "VOIR LE SITE",
+        "aboveFold": false,
+        "href": "https://www.skillswaps.social/"
+      },
+      {
+        "tag": "A",
+        "text": "VOIR LE SITE",
+        "aboveFold": false,
+        "href": "https://www.ibaperformance.com"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "CE PROCESS VOUS CONVIENT ? DÉMARRONS VOTRE PROJET",
+        "aboveFold": false,
+        "href": null
+      },
+      {
+        "tag": "A",
+        "text": "VOIR TOUS LES TÉMOIGNAGES SUR LINKEDIN",
+        "aboveFold": false,
+        "href": "https://www.linkedin.com/in/mokhmad-noutsoulkhanov-b74a56258/"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "03\nJe n'ai pas de budget énorme, vous travaillez quand même avec moi ?",
+        "aboveFold": false,
+        "href": null
+      }
+    ],
+    "navVisible": true,
+    "hamburger": {
+      "selector": "[aria-label*='Menu']",
+      "text": "",
+      "aboveFold": true
+    },
+    "overlays": [],
+    "images": [
+      {
+        "src": "/pp.webp",
+        "alt": "Mokhmad — Développeur Web Fullstack",
+        "hasAlt": true
+      }
+    ],
+    "hasHorizontalScroll": false,
+    "bodyScrollWidth": 375,
+    "viewportWidth": 375,
+    "viewportHeight": 812,
+    "openGraph": {
+      "title": "Mokhmad — Développeur Web Fullstack",
+      "description": "Je transforme les visiteurs en clients payants. Sites web et applications sur-mesure, livrés en 2-4 semaines.",
+      "image": "/pp.png",
+      "url": null
+    }
+  }
+}

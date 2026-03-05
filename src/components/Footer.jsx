@@ -33,15 +33,24 @@ const Footer = ({ scrollToSection, scrollToContact }) => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <button onClick={() => scrollToSection(item.id)} className="nav-link">
+                  <a
+                    href={`#${item.id}`}
+                    onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
+                    className="nav-link"
+                  >
                     {item.label}
-                  </button>
+                  </a>
                 </li>
               ))}
               <li>
-                <button onClick={scrollToContact} className="nav-link" style={{ color: 'var(--gold)' }}>
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); scrollToContact(); }}
+                  className="nav-link"
+                  style={{ color: 'var(--gold)' }}
+                >
                   Contact
-                </button>
+                </a>
               </li>
             </ul>
           </nav>
@@ -59,10 +68,13 @@ const Footer = ({ scrollToSection, scrollToContact }) => {
             © 2026 Mokhmad. Tous droits réservés.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            {['Mentions légales', 'Politique de confidentialité'].map((label) => (
+            {[
+              { label: 'Mentions légales', href: '/mentions-legales/' },
+              { label: 'Politique de confidentialité', href: '/politique-de-confidentialite/' },
+            ].map(({ label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
                 style={{
                   fontSize: '0.75rem',
                   color: 'var(--text-dim)',

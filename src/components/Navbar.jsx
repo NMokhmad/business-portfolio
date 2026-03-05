@@ -45,18 +45,24 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
                 { label: 'Process', id: 'process' },
                 { label: 'FAQ', id: 'faq' },
               ].map(({ label, id }) => (
-                <button
+                <a
                   key={id}
-                  onClick={() => scrollToSection(id)}
+                  href={`#${id}`}
+                  onClick={(e) => { e.preventDefault(); scrollToSection(id); }}
                   className={`nav-link${activeSection === id ? ' nav-link-active' : ''}`}
                 >
                   {label}
-                </button>
+                </a>
               ))}
 
-              <button onClick={scrollToContact} className="btn-gold" style={{ padding: '0.6rem 1.4rem' }}>
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); scrollToContact(); }}
+                className="btn-gold"
+                style={{ padding: '0.6rem 1.4rem', textDecoration: 'none' }}
+              >
                 Démarrer un projet
-              </button>
+              </a>
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
@@ -115,14 +121,13 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
               { label: 'Process', id: 'process' },
               { label: 'FAQ', id: 'faq' },
             ].map((item) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                href={`#${item.id}`}
+                onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
                 style={{
                   textAlign: 'left',
                   padding: '0.75rem 0',
-                  background: 'none',
-                  border: 'none',
                   borderBottom: '1px solid var(--border)',
                   color: activeSection === item.id ? 'var(--gold)' : 'var(--text-muted)',
                   fontFamily: "'Outfit', sans-serif",
@@ -130,18 +135,21 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   cursor: 'pointer',
+                  textDecoration: 'none',
+                  display: 'block',
                 }}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
-            <button
-              onClick={scrollToContact}
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollToContact(); }}
               className="btn-gold"
-              style={{ marginTop: '1rem', justifyContent: 'center' }}
+              style={{ marginTop: '1rem', justifyContent: 'center', textDecoration: 'none' }}
             >
               Démarrer un projet
-            </button>
+            </a>
           </div>
         </div>
       )}

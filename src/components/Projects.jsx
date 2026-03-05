@@ -1,4 +1,4 @@
-import { ExternalLink, Code } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { projects } from '../data/projects';
 
 const tagStyle = (color) => ({
@@ -43,6 +43,8 @@ const ProjectCard = ({ project, index }) => (
           src={project.image}
           alt={project.title}
           loading="lazy"
+          width="800"
+          height="500"
           style={{
             width: '100%',
             height: '100%',
@@ -157,14 +159,6 @@ const ProjectCard = ({ project, index }) => (
             <ExternalLink size={14} />
             Voir le site
           </a>
-          <span
-            title="Bientôt disponible"
-            className="btn-outline"
-            style={{ fontSize: '0.75rem', opacity: 0.4, cursor: 'not-allowed' }}
-          >
-            <Code size={14} />
-            Étude de cas (bientôt)
-          </span>
         </div>
       </div>
     </div>
