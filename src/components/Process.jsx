@@ -131,7 +131,7 @@ const Process = ({ scrollToContact }) => {
               gap: 0 1.25rem;
               padding: 0 0 2.5rem;
               border-left: 1px solid var(--border);
-              margin-left: 1.5rem;
+              margin-left: 2rem;
               padding-left: 1.5rem;
             }
             .process-step:last-child {
@@ -144,7 +144,7 @@ const Process = ({ scrollToContact }) => {
               font-size: 1.5rem !important;
               margin-bottom: 0 !important;
               position: absolute;
-              left: -1.85rem;
+              left: -2.1rem;
               top: -0.15rem;
             }
             .process-step h3 {

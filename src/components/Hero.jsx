@@ -277,7 +277,8 @@ const Hero = ({ scrollToContact, scrollToSection }) => {
           .hero-portrait-wrap {
             width: clamp(160px, 55vw, 260px);
             height: clamp(200px, 70vw, 320px);
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
+            order: -1;
           }
         }
       `}</style>

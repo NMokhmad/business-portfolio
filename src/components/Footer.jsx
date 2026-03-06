@@ -67,7 +67,7 @@ const Footer = ({ scrollToSection, scrollToContact }) => {
           <p style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontFamily: "'Outfit', sans-serif" }}>
             © 2026 Mokhmad. Tous droits réservés.
           </p>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.5rem', justifyContent: 'flex-end' }}>
             {[
               { label: 'Mentions légales', href: '/mentions-legales/' },
               { label: 'Politique de confidentialité', href: '/politique-de-confidentialite/' },

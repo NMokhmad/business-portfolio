@@ -88,7 +88,7 @@ const Problems = ({ scrollToContact }) => {
               display: none;
             }
             .problem-row > div:last-child {
-              padding: 0 0 1.5rem !important;
+              padding: 0 0 1.5rem 2rem !important;
             }
           }
         `}</style>

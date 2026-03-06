@@ -76,6 +76,7 @@ const FAQItem = ({ item, index }) => {
         }}
       >
         <div
+          className="faq-answer"
           style={{
             padding: '0 1.5rem 1.5rem calc(2.5rem + 1.25rem)',
             fontSize: '0.9rem',

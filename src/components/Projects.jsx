@@ -16,21 +16,7 @@ const tagStyle = (color) => ({
 });
 
 const ProjectCard = ({ project, index }) => (
-  <>
-    <style>{`
-      .pc-inner-${index} {
-        display: flex;
-        flex-direction: column;
-        min-height: 340px;
-      }
-      @media (min-width: 768px) {
-        .pc-inner-${index} {
-          flex-direction: ${index % 2 === 0 ? 'row' : 'row-reverse'};
-        }
-      }
-    `}</style>
-
-    <div className={`card pc-inner-${index}`} style={{ background: 'var(--surface)' }}>
+    <div className={`card pc-inner ${index % 2 === 0 ? 'pc-inner-even' : 'pc-inner-odd'}`} style={{ background: 'var(--surface)' }}>
       {/* Image panel */}
       <div style={{
         flex: '0 0 42%',
@@ -162,7 +148,6 @@ const ProjectCard = ({ project, index }) => (
         </div>
       </div>
     </div>
-  </>
 );
 
 const Projects = () => {

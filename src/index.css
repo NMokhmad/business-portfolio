@@ -496,19 +496,22 @@ section[style*="min-height"] {
 
 /* Reduce the separator's bottom margin (inline style = 6rem, too generous) */
 hr.section-sep {
-  margin-bottom: 3rem !important;
+  margin-bottom: 3rem;
 }
 
-/* Differentiators: force 2×2 grid on desktop, 1 col on mobile */
-.diff-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
+/* ================================================
+   PROJECT CARDS
+   ================================================ */
+
+.pc-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
 }
 
-@media (max-width: 640px) {
-  .diff-grid {
-    grid-template-columns: 1fr !important;
-  }
+@media (min-width: 768px) {
+  .pc-inner-even { flex-direction: row; }
+  .pc-inner-odd  { flex-direction: row-reverse; }
 }
 
 /* ================================================
@@ -553,6 +556,11 @@ hr.section-sep {
     width: 36px;
     height: 36px;
     font-size: 1.1rem;
+  }
+
+  /* FAQ answer: réduire l'indent profond sur mobile */
+  .faq-answer {
+    padding-left: 1rem !important;
   }
 }
 

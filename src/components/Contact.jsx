@@ -178,7 +178,7 @@ const Contact = () => {
                   name="budget"
                   value={formData.budget}
                   onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  className="form-input" style={{ cursor: 'pointer' }}
+                  className="form-input" style={{ cursor: 'pointer', appearance: 'none', WebkitAppearance: 'none' }}
                 >
                   <option value="">Sélectionnez une fourchette</option>
                   <option value="< 2000€">Moins de 2 000€</option>

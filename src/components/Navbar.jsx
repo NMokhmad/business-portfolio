@@ -84,25 +84,38 @@ const Navbar = ({ darkMode, setDarkMode, mobileMenuOpen, setMobileMenuOpen, scro
           </div>
 
           {/* Mobile controls */}
-          <div className="mobile-controls" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div className="mobile-controls" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <button
               onClick={() => setDarkMode(!darkMode)}
               style={{
-                padding: '0.45rem',
+                minWidth: '44px',
+                minHeight: '44px',
+                padding: '0.6rem',
                 background: 'var(--surface-2)',
                 border: '1px solid var(--border)',
                 color: 'var(--text-muted)',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
               aria-label="Changer le thème"
             >
-              {darkMode ? <Sun size={15} /> : <Moon size={15} />}
+              {darkMode ? <Sun size={16} /> : <Moon size={16} />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex' }}
+              style={{
+                minWidth: '44px',
+                minHeight: '44px',
+                background: 'none',
+                border: 'none',
+                color: 'var(--text-muted)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
               aria-label="Menu"
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
