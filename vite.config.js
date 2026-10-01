@@ -26,4 +26,6 @@ function serveStaticPagesPlugin() {
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), serveStaticPagesPlugin()],
+  // Expose les variables EmailJS (sans préfixe VITE_) au code client
+  envPrefix: ['VITE_', 'EMAILJS_'],
 })

@@ -35,7 +35,7 @@ npm run dev
 
 Le projet tourne sur `http://localhost:5173`.
 
-> **Note :** Les variables d'environnement EmailJS (`VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`) sont nécessaires pour le formulaire de contact. Sans elles, le formulaire affiche une erreur mais le reste du site fonctionne parfaitement.
+> **Note :** Les variables d'environnement EmailJS (`EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID`, `EMAILJS_PUBLIC_KEY`) sont nécessaires pour le formulaire de contact. Sans elles, le formulaire affiche une erreur mais le reste du site fonctionne parfaitement.
 
 ## Contact
 
